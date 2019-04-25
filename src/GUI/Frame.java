@@ -2,12 +2,18 @@ package GUI;
 
 import Game.Helpers.Data.FrameData;
 import Game.Helpers.Enums.FrameButtonsEnum;
+import Game.Pokemon.Pokemon;
 import Game.Pokemon.Trainer;
 
+import javax.imageio.IIOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Frame extends JFrame implements FrameData {
@@ -16,7 +22,11 @@ public class Frame extends JFrame implements FrameData {
     private JTextArea textOutput;
     private ArrayList<Button> buttons;
     private FrameButtonsEnum currentButtonEnum;
-    private Trainer trainer;
+    private Trainer player;
+    private Trainer opponent;
+
+    private JLabel playerImage;
+    private JLabel opponentImage;
 
     private Frame() {
         waitingForNext = false;
@@ -52,26 +62,48 @@ public class Frame extends JFrame implements FrameData {
     }
 
     private JPanel CreateTopPanel() {
-        JPanel imageContainer = new JPanel();
-        imageContainer.setBackground(Color.YELLOW);
+        JPanel topPanel = new JPanel();
+        topPanel.add(CreateImagePanel(), BorderLayout.CENTER);
+        topPanel.add(CreateTextPanel(), BorderLayout.PAGE_START);
+        return topPanel;
+    }
+
+    private ImagePanel CreateImagePanel() {
+        ImagePanel imageContainer = new ImagePanel(createBackgroundImage());
+        imageContainer.setLayout(new GridLayout(2, 2));
+        imageContainer.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0));
+
+        playerImage = new JLabel();
+        playerImage.setHorizontalAlignment(SwingConstants.CENTER);
+        playerImage.setVerticalAlignment(SwingConstants.CENTER);
+
+        opponentImage = new JLabel();
+        opponentImage.setHorizontalAlignment(SwingConstants.CENTER);
+        opponentImage.setVerticalAlignment(SwingConstants.TOP);
+
+        imageContainer.add(new JLabel());
+        imageContainer.add(opponentImage);
+        imageContainer.add(playerImage);
+        imageContainer.add(new JLabel());
         imageContainer.setPreferredSize(new Dimension(FRAME_WIDTH, 3 * (FRAME_HEIGHT / 2) / 4));
 
-        JPanel textContainer = new JPanel();
-        textContainer.setPreferredSize(new Dimension(FRAME_WIDTH, (FRAME_HEIGHT / 2) / 4));
-        textContainer.setLayout(new BorderLayout());
-        textContainer.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        return imageContainer;
+    }
+
+    private JPanel CreateTextPanel() {
+        JPanel textPanel = new JPanel();
+        textPanel.setPreferredSize(new Dimension(FRAME_WIDTH, (FRAME_HEIGHT / 2) / 4));
+        textPanel.setLayout(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
         textOutput = new JTextArea();
         textOutput.setEditable(false);
         textOutput.setLineWrap(true);
         textOutput.setWrapStyleWord(true);
         textOutput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         textOutput.setFont(new Font("Courier New", Font.PLAIN, 14));
-        textContainer.add(textOutput);
+        textPanel.add(textOutput);
 
-        JPanel topPanel = new JPanel();
-        topPanel.add(imageContainer, BorderLayout.CENTER);
-        topPanel.add(textContainer, BorderLayout.PAGE_START);
-        return topPanel;
+        return textPanel;
     }
 
     private JPanel CreateBottomPanel() {
@@ -95,22 +127,22 @@ public class Frame extends JFrame implements FrameData {
                                 waitingForNext = true;
                             } else if (button.getId() == 1) {
                                 currentButtonEnum = FrameButtonsEnum.POKEMON_ONE;
-                                trainer.getCurrentPokemon().setCurrentMove(-1);
+                                player.getCurrentPokemon().setCurrentMove(-1);
                                 waitingForNext = true;
                             }
                             break;
                         }
                         case MOVE_TWO: {
-                            trainer.getCurrentPokemon().setCurrentMove(button.getId());
+                            player.getCurrentPokemon().setCurrentMove(button.getId());
                             waitingForNext = true;
                             break;
                         }
                         case POKEMON_ONE: {
-                            if (button.getId() < trainer.getPokemonTotalNum() && trainer.getCurrentPokemon().getName().equals(trainer.getPokemon(button.getId()).getName())) {
+                            if (button.getId() < player.getPokemonTotalNum() && player.getCurrentPokemon().getName().equals(player.getPokemon(button.getId()).getName())) {
                                 waitingForNext = true;
                             }
                             if (button.getId() == 3) {
-                                if (trainer.getPokemonTotalNum() <= button.getId()) {
+                                if (player.getPokemonTotalNum() <= button.getId()) {
                                     waitingForNext = true;
                                 }
                                 else {
@@ -118,25 +150,25 @@ public class Frame extends JFrame implements FrameData {
                                     waitingForNext = true;
                                 }
                             }
-                            else if (button.getId() < trainer.getPokemonTotalNum() &&
+                            else if (button.getId() < player.getPokemonTotalNum() &&
                             button.getId() < 3 &&
-                            trainer.getPokemon(button.getId()).getHp() > 0) {
-                                trainer.setCurrentPokemon(button.getId());
+                            player.getPokemon(button.getId()).getHp() > 0) {
+                                player.setCurrentPokemon(button.getId());
                                 waitingForNext = true;
                             }
                             break;
                         }
                         case POKEMON_TWO: {
-                            if (button.getId() < trainer.getPokemonTotalNum() && trainer.getCurrentPokemon().getName().equals(trainer.getPokemon(button.getId()).getName())) {
+                            if (button.getId() < player.getPokemonTotalNum() && player.getCurrentPokemon().getName().equals(player.getPokemon(button.getId()).getName())) {
                                 waitingForNext = true;
                             }
                             if (button.getId() == 3) {
                                 waitingForNext = true;
                             }
-                            else if (button.getId() + 3 < trainer.getPokemonTotalNum() &&
+                            else if (button.getId() + 3 < player.getPokemonTotalNum() &&
                             button.getId() < 3 &&
-                            trainer.getPokemon(button.getId() + 3).getHp() > 0) {
-                                trainer.setCurrentPokemon(button.getId() + 3);
+                                    player.getPokemon(button.getId() + 3).getHp() > 0) {
+                                player.setCurrentPokemon(button.getId() + 3);
                                 waitingForNext = true;
                             }
                             break;
@@ -150,8 +182,32 @@ public class Frame extends JFrame implements FrameData {
         return bottomPanel;
     }
 
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
+    public void setTrainer(Trainer player, Trainer opponent) {
+        this.player = player;
+        this.opponent = opponent;
+    }
+
+    public void setPokemonImage(boolean player) {
+        if (player) {
+            playerImage.setIcon(this.player.getCurrentPokemon().getBackIcon());
+        }
+        else {
+            opponentImage.setIcon(this.opponent.getCurrentPokemon().getFrontIcon());
+        }
+    }
+
+    private Image createBackgroundImage() {
+        Image image = null;
+        try {
+
+            File f = new File(System.getProperty("user.dir") + "\\images\\Backgrounds\\Gym.jpg");
+            if (f.exists()) System.out.println("Exists");
+            image = ImageIO.read(f);
+        } catch (IOException e) {
+            // Nothing
+        }
+
+        return image.getScaledInstance(FRAME_WIDTH, FRAME_HEIGHT / 2, Image.SCALE_SMOOTH);
     }
 
     private void setText(String text)
@@ -227,16 +283,16 @@ public class Frame extends JFrame implements FrameData {
 
     private void moveTwo() {
         for (int i = 0; i < 4; i++) {
-            buttons.get(i).setText(trainer.getCurrentPokemon().getMove(i).getName());
+            buttons.get(i).setText(player.getCurrentPokemon().getMove(i).getName());
         }
     }
 
     private void pokemonOne() {
-        for (int i = 0; i < trainer.getPokemonTotalNum() && i < 3; i++) {
-            final String name = trainer.getPokemon(i).getName() + " HP " + trainer.getPokemon(i).getHp() + "/" + trainer.getPokemon(i).getHpMax();
+        for (int i = 0; i < player.getPokemonTotalNum() && i < 3; i++) {
+            final String name = player.getPokemon(i).getName() + " HP " + player.getPokemon(i).getHp() + "/" + player.getPokemon(i).getHpMax();
             buttons.get(i).setText(name);
         }
-        if (trainer.getPokemonTotalNum() > 3) {
+        if (player.getPokemonTotalNum() > 3) {
             buttons.get(3).setText("Next");
         }
         else {
@@ -245,8 +301,8 @@ public class Frame extends JFrame implements FrameData {
     }
 
     private void pokemonTwo() {
-        for (int i = 3; i < trainer.getPokemonTotalNum() && i < 6; i++) {
-            final String name = trainer.getPokemon(i).getName() + " HP " + trainer.getPokemon(i).getHp() + "/" + trainer.getPokemon(i).getHpMax();
+        for (int i = 3; i < player.getPokemonTotalNum() && i < 6; i++) {
+            final String name = player.getPokemon(i).getName() + " HP " + player.getPokemon(i).getHp() + "/" + player.getPokemon(i).getHpMax();
             buttons.get(i - 3).setText(name);
         }
         buttons.get(3).setText("Back");

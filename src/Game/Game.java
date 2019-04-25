@@ -16,7 +16,7 @@ public class Game {
 
         List<Trainer> trainers = Create.CreateNewGame();
 
-        Frame.getInstance().setTrainer(trainers.get(0));
+        Frame.getInstance().setTrainer(trainers.get(0), trainers.get(1));
 
         Battle.Battle(trainers.get(0), trainers.get(1));
     }

@@ -3,7 +3,12 @@ package Game.Pokemon;
 import Game.Helpers.Enums.StatusEffectEnum;
 import Game.Helpers.Enums.TypeEnum;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +27,8 @@ public class Pokemon {
     private Status status;
     private List<Move> moves;
     private int currentMove;
-    private Icon front;
-    private Icon back;
+    private ImageIcon front;
+    private ImageIcon back;
 
     public Pokemon(String name, int level, TypeEnum typeOne, TypeEnum typeTwo, int hp, int attack, int defence, int specialAttack, int specialDefence, int speed, List<Move> moves) {
         this.name = name;
@@ -41,11 +46,11 @@ public class Pokemon {
         this.status = new Status();
         this.moves = moves;
         this.currentMove = -1;
-        this.front = new ImageIcon(System.getProperty("user.dir") + "\\images\\" + name + "-front.png");
-        this.back = new ImageIcon(System.getProperty("user.dir") + "\\images\\" + name + "-back.png");
+        this.front = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-front.png");
+        this.back = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-back.png");
     }
 
-    private Pokemon(String name, int level, List<TypeEnum> type, int hp, int hpMax, int attack, int defence, int specialAttack, int specialDefence, int speed, Status status, List<Move> moves, int currentMove, Icon front, Icon back) {
+    private Pokemon(String name, int level, List<TypeEnum> type, int hp, int hpMax, int attack, int defence, int specialAttack, int specialDefence, int speed, Status status, List<Move> moves, int currentMove, ImageIcon front, ImageIcon back) {
         this.name = name;
         this.level = level;
         this.type = new ArrayList<>();
@@ -160,11 +165,28 @@ public class Pokemon {
         return currentMove;
     }
 
-    public Icon getFrontIcon() {
+    public ImageIcon getFrontIcon() {
         return front;
     }
 
-    public Icon getBackIcon() {
+    public ImageIcon getBackIcon() {
         return back;
+    }
+
+    private ImageIcon setImage(String path) {
+        BufferedImage image = null;
+        try {
+
+            File f = new File(path);
+            if (f.exists()) System.out.println("Exists");
+            image = ImageIO.read(f);
+        } catch (IOException e) {
+            // Nothing
+        }
+
+        Image scaledImage = image.getScaledInstance(150, 150,
+                Image.SCALE_SMOOTH);
+
+        return new ImageIcon(scaledImage);
     }
 }

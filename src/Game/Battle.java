@@ -17,8 +17,11 @@ class Battle {
         Pokemon playerPokemon = player.getCurrentPokemon();
         Pokemon opponentPokemon = opponent.getCurrentPokemon();
 
+        Frame.getInstance().setPokemonImage(true);
         Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
+        Frame.getInstance().setPokemonImage(false);
         Frame.getInstance().setTextAndWaitForNext(opponent.getName() + " sends out " + opponentPokemon.getName() + ".");
+
         while(true) {
             PrintStatus(player, opponent, playerPokemon, opponentPokemon);
 
@@ -32,6 +35,7 @@ class Battle {
 
                 if (!temp.getName().equals(player.getCurrentPokemon().getName())) {
                     playerPokemon = player.getCurrentPokemon();
+                    Frame.getInstance().setPokemonImage(true);
                     Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
                     Attack(opponentPokemon, playerPokemon, false);
 
@@ -92,13 +96,14 @@ class Battle {
                     Frame.getInstance().setTextAndWaitForPokemonTwo("Who to send out?");
                 }
                 playerPokemon = player.getCurrentPokemon();
+                Frame.getInstance().setPokemonImage(true);
                 Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
             }
 
             if (opponentPokemonFaint && opponent.getPokemonAwakeNum() > 0) {
                 opponent.setCurrentPokemon(opponent.getCurrentPokemonIndex() + 1);
                 opponentPokemon = opponent.getCurrentPokemon();
-                System.out.println(opponent.getName() + " sends out " + opponentPokemon.getName() + ".");
+                Frame.getInstance().setPokemonImage(false);
                 Frame.getInstance().setTextAndWaitForNext(opponent.getName() + " sends out " + opponentPokemon.getName() + ".");
             }
 
