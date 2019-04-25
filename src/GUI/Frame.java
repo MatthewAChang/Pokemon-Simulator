@@ -21,12 +21,14 @@ public class Frame extends JFrame implements FrameData {
     private boolean waitingForNext;
     private JTextArea textOutput;
     private ArrayList<Button> buttons;
+
     private FrameButtonsEnum currentButtonEnum;
-    private Trainer player;
-    private Trainer opponent;
 
     private JLabel playerImage;
     private JLabel opponentImage;
+
+    private Trainer player;
+    private Trainer opponent;
 
     private Frame() {
         waitingForNext = false;
@@ -99,8 +101,8 @@ public class Frame extends JFrame implements FrameData {
         textOutput.setEditable(false);
         textOutput.setLineWrap(true);
         textOutput.setWrapStyleWord(true);
-        textOutput.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        textOutput.setFont(new Font("Courier New", Font.PLAIN, 14));
+        textOutput.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        textOutput.setFont(new Font("Courier New", Font.PLAIN, 16));
         textPanel.add(textOutput);
 
         return textPanel;

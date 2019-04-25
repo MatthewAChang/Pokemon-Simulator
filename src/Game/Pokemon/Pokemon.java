@@ -184,8 +184,7 @@ public class Pokemon {
             // Nothing
         }
 
-        Image scaledImage = image.getScaledInstance(150, 150,
-                Image.SCALE_SMOOTH);
+        Image scaledImage = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 
         return new ImageIcon(scaledImage);
     }

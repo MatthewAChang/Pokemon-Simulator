@@ -20,22 +20,7 @@ public class Trainer {
         this.pokemonTotalNum = this.pokemonAwakeNum;
         this.currentPokemon = -1;
     }
-
-    private Trainer(String name, List<Pokemon> pokemon, int pokemonAwakeNum, int pokemonTotalNum, int currentPokemon) {
-        this.name = name;
-        this.pokemon = new ArrayList<>();
-        for (Pokemon p : pokemon) {
-            this.pokemon.add(Pokemon.copy(p));
-        }
-        this.pokemonAwakeNum = pokemonAwakeNum;
-        this.pokemonTotalNum = pokemonTotalNum;
-        this.currentPokemon = currentPokemon;
-    }
-
-    public static Trainer copy(Trainer other) {
-        return new Trainer(other.name, other.pokemon, other.pokemonAwakeNum, other.pokemonTotalNum, other.currentPokemon);
-    }
-
+    
     public String getName() {
         return name;
     }

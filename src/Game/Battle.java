@@ -76,13 +76,11 @@ class Battle {
             boolean opponentPokemonFaint = false;
 
             if (playerPokemon.getHp() <= 0) {
-                System.out.println(playerPokemon.getName() + " has fainted.");
                 Frame.getInstance().setTextAndWaitForNext(playerPokemon.getName() + " has fainted.");
                 player.pokemonFaints();
                 playerPokemonFaint = true;
             }
             if (opponentPokemon.getHp() <= 0) {
-                System.out.println(opponentPokemon.getName() + " has fainted.");
                 Frame.getInstance().setTextAndWaitForNext(opponentPokemon.getName() + " has fainted.");
                 opponent.pokemonFaints();
                 opponentPokemonFaint = true;
@@ -135,7 +133,6 @@ class Battle {
                     if (!player) {
                         opposing = "The opposing ";
                     }
-                    System.out.println(opposing + pokemon.getName() + " thawed.");
                     Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " thawed.");
                 }
                 break;
@@ -150,7 +147,6 @@ class Battle {
                     if (!player) {
                         opposing = "The opposing ";
                     }
-                    System.out.println(opposing + pokemon.getName() + " woke up.");
                     Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " woke up.");
                 }
                 break;
@@ -164,7 +160,6 @@ class Battle {
         if (!player) {
             opposing = "The opposing ";
         }
-        System.out.println(opposing + pokemon.getName() + " is hurt by its " + statusDamage + ". -" + damage);
         Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is hurt by its " + statusDamage + ". -" + damage);
     }
 
@@ -175,20 +170,16 @@ class Battle {
         }
 
         if (attacker.isParalyzed() && ThreadLocalRandom.current().nextInt(1, 101) < 25) {
-            System.out.println(opposing + attacker.getName() + " is paralyzed.");
             Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is paralyzed.");
         }
         else if (attacker.isAsleep()) {
-            System.out.println(opposing + attacker.getName() + " is fast asleep");
             Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is fast asleep");
         }
         else if (attacker.isFrozen()) {
-            System.out.println(opposing + attacker.getName() + " is frozen solid.");
             Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is frozen solid.");
         }
         else {
             Move move = attacker.getCurrentMove();
-            System.out.println(opposing + attacker.getName() + " used " + move.getName() + ".");
             Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " used " + move.getName() + ".");
             if (ThreadLocalRandom.current().nextInt(1, 101) < move.getAccuracy()) {
                 DamageCalculator.CalculateDamage(attacker, defender, move);
@@ -200,7 +191,6 @@ class Battle {
                 }
             }
             else {
-                System.out.println(opposing + attacker.getName() + " missed.");
                 Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " missed.");
             }
         }

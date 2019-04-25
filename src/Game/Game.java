@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 
 public class Game {
-    public static void Pokemon() {
+    public static void PokemonGame() {
         NewGame();
     }
 

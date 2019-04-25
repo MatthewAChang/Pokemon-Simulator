@@ -43,15 +43,12 @@ public class DamageCalculator {
             type *= TypeModifier(move.getType(), defender.getType(1));
         }
         if (type == 0) {
-            System.out.println("It had no effect");
             Frame.getInstance().setTextAndWaitForNext("It had no effect");
         }
         else if (type < 1) {
-            System.out.println("It was not very effective");
             Frame.getInstance().setTextAndWaitForNext("It was not very effective");
         }
         else if (type > 1){
-            System.out.println("It was super effective.");
             Frame.getInstance().setTextAndWaitForNext("It was super effective.");
         }
         damage *= type;

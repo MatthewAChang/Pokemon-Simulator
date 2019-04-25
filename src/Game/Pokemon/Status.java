@@ -57,14 +57,6 @@ public class Status {
                 status == StatusEffectEnum.SLP) {
             this.status = status;
         }
-        else {
-            this.status = StatusEffectEnum.NON;
-        }
-    }
-
-    public void setStatus(StatusEffectEnum status, int chance) {
-        this.status = status;
-        this.chance = chance;
     }
 
     public void resetStatus() {
