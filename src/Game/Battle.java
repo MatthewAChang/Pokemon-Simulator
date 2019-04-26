@@ -76,11 +76,13 @@ class Battle {
             boolean opponentPokemonFaint = false;
 
             if (playerPokemon.getHp() <= 0) {
+                Frame.getInstance().removePokemonImage(true);
                 Frame.getInstance().setTextAndWaitForNext(playerPokemon.getName() + " has fainted.");
                 player.pokemonFaints();
                 playerPokemonFaint = true;
             }
             if (opponentPokemon.getHp() <= 0) {
+                Frame.getInstance().removePokemonImage(false);
                 Frame.getInstance().setTextAndWaitForNext(opponentPokemon.getName() + " has fainted.");
                 opponent.pokemonFaints();
                 opponentPokemonFaint = true;

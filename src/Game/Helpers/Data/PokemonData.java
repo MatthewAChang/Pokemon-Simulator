@@ -53,4 +53,7 @@ public interface PokemonData {
         { 140, 130, 150,  80,  85, 115 }, // Leafeon
         { 155, 115, 102,  80, 102,  95 } // Garbodor
     };
+
+    int POKEMON_FRONT_IMAGE_SIZE = 150;
+    int POKEMON_BACK_IMAGE_SIZE = 225;
 }

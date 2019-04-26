@@ -2,30 +2,26 @@ package GUI;
 
 import Game.Helpers.Data.FrameData;
 import Game.Helpers.Enums.FrameButtonsEnum;
-import Game.Pokemon.Pokemon;
 import Game.Pokemon.Trainer;
 
-import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Frame extends JFrame implements FrameData {
     private static Frame instance;
+
     private boolean waitingForNext;
     private JTextArea textOutput;
     private ArrayList<Button> buttons;
+    private PokemonComponent pokemonComponent;
 
     private FrameButtonsEnum currentButtonEnum;
-
-    private JLabel playerImage;
-    private JLabel opponentImage;
 
     private Trainer player;
     private Trainer opponent;
@@ -65,36 +61,20 @@ public class Frame extends JFrame implements FrameData {
 
     private JPanel CreateTopPanel() {
         JPanel topPanel = new JPanel();
-        topPanel.add(CreateImagePanel(), BorderLayout.CENTER);
+        topPanel.add(CreatePokemonComponent(), BorderLayout.CENTER);
         topPanel.add(CreateTextPanel(), BorderLayout.PAGE_START);
         return topPanel;
     }
 
-    private ImagePanel CreateImagePanel() {
-        ImagePanel imageContainer = new ImagePanel(createBackgroundImage());
-        imageContainer.setLayout(new GridLayout(2, 2));
-        imageContainer.setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0));
-
-        playerImage = new JLabel();
-        playerImage.setHorizontalAlignment(SwingConstants.CENTER);
-        playerImage.setVerticalAlignment(SwingConstants.CENTER);
-
-        opponentImage = new JLabel();
-        opponentImage.setHorizontalAlignment(SwingConstants.CENTER);
-        opponentImage.setVerticalAlignment(SwingConstants.TOP);
-
-        imageContainer.add(new JLabel());
-        imageContainer.add(opponentImage);
-        imageContainer.add(playerImage);
-        imageContainer.add(new JLabel());
-        imageContainer.setPreferredSize(new Dimension(FRAME_WIDTH, 3 * (FRAME_HEIGHT / 2) / 4));
-
-        return imageContainer;
+    private PokemonComponent CreatePokemonComponent() {
+        pokemonComponent = new PokemonComponent();
+        pokemonComponent.setBackgroundImage(createBackgroundImage());
+        return pokemonComponent;
     }
 
     private JPanel CreateTextPanel() {
         JPanel textPanel = new JPanel();
-        textPanel.setPreferredSize(new Dimension(FRAME_WIDTH, (FRAME_HEIGHT / 2) / 4));
+        textPanel.setPreferredSize(new Dimension(FRAME_WIDTH, TOP_PANEL_TEXT_HEIGHT));
         textPanel.setLayout(new BorderLayout());
         textPanel.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
         textOutput = new JTextArea();
@@ -113,68 +93,66 @@ public class Frame extends JFrame implements FrameData {
         bottomPanel.setLayout(new GridLayout(2, 2));
         for (int i = 0; i < 4; i++) {
             Button button = new Button(i);
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    switch (currentButtonEnum) {
-                        case NEXT: {
-                            if (button.getId() == 3) {
-                                waitingForNext = true;
-                            }
-                            break;
-                        }
-                        case MOVE_ONE: {
-                            if (button.getId() == 0) {
-                                currentButtonEnum = FrameButtonsEnum.MOVE_TWO;
-                                waitingForNext = true;
-                            } else if (button.getId() == 1) {
-                                currentButtonEnum = FrameButtonsEnum.POKEMON_ONE;
-                                player.getCurrentPokemon().setCurrentMove(-1);
-                                waitingForNext = true;
-                            }
-                            break;
-                        }
-                        case MOVE_TWO: {
-                            player.getCurrentPokemon().setCurrentMove(button.getId());
+            button.setFont((new Font("Courier New", Font.PLAIN, 16)));
+            button.addActionListener(e -> {
+                switch (currentButtonEnum) {
+                    case NEXT: {
+                        if (button.getId() == 3) {
                             waitingForNext = true;
-                            break;
                         }
-                        case POKEMON_ONE: {
-                            if (button.getId() < player.getPokemonTotalNum() && player.getCurrentPokemon().getName().equals(player.getPokemon(button.getId()).getName())) {
-                                waitingForNext = true;
-                            }
-                            if (button.getId() == 3) {
-                                if (player.getPokemonTotalNum() <= button.getId()) {
-                                    waitingForNext = true;
-                                }
-                                else {
-                                    currentButtonEnum = FrameButtonsEnum.POKEMON_TWO;
-                                    waitingForNext = true;
-                                }
-                            }
-                            else if (button.getId() < player.getPokemonTotalNum() &&
-                            button.getId() < 3 &&
-                            player.getPokemon(button.getId()).getHp() > 0) {
-                                player.setCurrentPokemon(button.getId());
-                                waitingForNext = true;
-                            }
-                            break;
+                        break;
+                    }
+                    case MOVE_ONE: {
+                        if (button.getId() == 0) {
+                            currentButtonEnum = FrameButtonsEnum.MOVE_TWO;
+                            waitingForNext = true;
+                        } else if (button.getId() == 1) {
+                            currentButtonEnum = FrameButtonsEnum.POKEMON_ONE;
+                            player.getCurrentPokemon().setCurrentMove(-1);
+                            waitingForNext = true;
                         }
-                        case POKEMON_TWO: {
-                            if (button.getId() < player.getPokemonTotalNum() && player.getCurrentPokemon().getName().equals(player.getPokemon(button.getId()).getName())) {
-                                waitingForNext = true;
-                            }
-                            if (button.getId() == 3) {
-                                waitingForNext = true;
-                            }
-                            else if (button.getId() + 3 < player.getPokemonTotalNum() &&
-                            button.getId() < 3 &&
-                                    player.getPokemon(button.getId() + 3).getHp() > 0) {
-                                player.setCurrentPokemon(button.getId() + 3);
-                                waitingForNext = true;
-                            }
-                            break;
+                        break;
+                    }
+                    case MOVE_TWO: {
+                        player.getCurrentPokemon().setCurrentMove(button.getId());
+                        waitingForNext = true;
+                        break;
+                    }
+                    case POKEMON_ONE: {
+                        if (button.getId() < player.getPokemonTotalNum() && player.getCurrentPokemon().getName().equals(player.getPokemon(button.getId()).getName())) {
+                            waitingForNext = true;
                         }
+                        if (button.getId() == 3) {
+                            if (player.getPokemonTotalNum() <= button.getId()) {
+                                waitingForNext = true;
+                            }
+                            else {
+                                currentButtonEnum = FrameButtonsEnum.POKEMON_TWO;
+                                waitingForNext = true;
+                            }
+                        }
+                        else if (button.getId() < player.getPokemonTotalNum() &&
+                        button.getId() < 3 &&
+                        player.getPokemon(button.getId()).getHp() > 0) {
+                            player.setCurrentPokemon(button.getId());
+                            waitingForNext = true;
+                        }
+                        break;
+                    }
+                    case POKEMON_TWO: {
+                        if (button.getId() < player.getPokemonTotalNum() && player.getCurrentPokemon().getName().equals(player.getPokemon(button.getId()).getName())) {
+                            waitingForNext = true;
+                        }
+                        if (button.getId() == 3) {
+                            waitingForNext = true;
+                        }
+                        else if (button.getId() + 3 < player.getPokemonTotalNum() &&
+                        button.getId() < 3 &&
+                                player.getPokemon(button.getId() + 3).getHp() > 0) {
+                            player.setCurrentPokemon(button.getId() + 3);
+                            waitingForNext = true;
+                        }
+                        break;
                     }
                 }
             });
@@ -191,10 +169,19 @@ public class Frame extends JFrame implements FrameData {
 
     public void setPokemonImage(boolean player) {
         if (player) {
-            playerImage.setIcon(this.player.getCurrentPokemon().getBackIcon());
+            pokemonComponent.setPlayerPokemon(this.player.getCurrentPokemon().getBackIcon(), true);
         }
         else {
-            opponentImage.setIcon(this.opponent.getCurrentPokemon().getFrontIcon());
+            pokemonComponent.setPlayerPokemon(this.opponent.getCurrentPokemon().getFrontIcon(), false);
+        }
+    }
+
+    public void removePokemonImage(boolean player) {
+        if (player) {
+            pokemonComponent.removePlayerPokemon(true);
+        }
+        else {
+            pokemonComponent.removePlayerPokemon(false);
         }
     }
 
@@ -202,8 +189,7 @@ public class Frame extends JFrame implements FrameData {
         Image image = null;
         try {
 
-            File f = new File(System.getProperty("user.dir") + "\\images\\Backgrounds\\Gym.jpg");
-            if (f.exists()) System.out.println("Exists");
+            File f = new File(System.getProperty("user.dir") + "\\images\\Backgrounds\\" + BACKGROUND_IMAGE);
             image = ImageIO.read(f);
         } catch (IOException e) {
             // Nothing

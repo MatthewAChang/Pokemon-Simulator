@@ -4,7 +4,6 @@ import GUI.Frame;
 import Game.Helpers.Create;
 import Game.Pokemon.Trainer;
 
-import java.awt.event.WindowEvent;
 import java.util.List;
 
 public class Game {

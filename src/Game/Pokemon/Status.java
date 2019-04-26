@@ -12,11 +12,6 @@ public class Status {
         this.chance = 0;
     }
 
-    public Status(StatusEffectEnum status) {
-        this.status = status;
-        this.chance = 0;
-    }
-
     public Status(StatusEffectEnum status, int chance) {
         this.status = status;
         this.chance = chance;
