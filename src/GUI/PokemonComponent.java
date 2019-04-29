@@ -1,13 +1,14 @@
 package GUI;
 
 import Game.Helpers.Data.FrameData;
+import Game.Pokemon.Trainer;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PokemonComponent extends JComponent implements FrameData {
-    private Image playerPokemon;
-    private Image opponentPokemon;
+    private PokemonGraphic playerPokemon;
+    private PokemonGraphic opponentPokemon;
     private Image background;
 
     public PokemonComponent() {
@@ -19,23 +20,12 @@ public class PokemonComponent extends JComponent implements FrameData {
         setLayout(null);
     }
 
-    public void setPlayerPokemon(Image pokemon, boolean player) {
-        if (player) {
-            this.playerPokemon = pokemon;
-        }
-        else {
-            this.opponentPokemon = pokemon;
-        }
-        repaint();
+    public void setTrainer(Trainer player, Trainer opponent) {
+        playerPokemon = new PokemonGraphic(player, true);
+        opponentPokemon = new PokemonGraphic(opponent, false);
     }
 
-    public void removePlayerPokemon(boolean player) {
-        if (player) {
-            this.playerPokemon = null;
-        }
-        else {
-            this.opponentPokemon = null;
-        }
+    public void update() {
         repaint();
     }
 
@@ -46,16 +36,18 @@ public class PokemonComponent extends JComponent implements FrameData {
     @Override
     public void paintComponent(Graphics g)
     {
+        Graphics2D g2 = (Graphics2D) g;
+
         if (this.background != null) {
             g.drawImage(background, 0, 0, null);
         }
 
         if (this.playerPokemon != null) {
-            g.drawImage(playerPokemon, PLAYER_POKEMON_X, PLAYER_POKEMON_Y, null);
+            playerPokemon.draw(g2);
         }
 
         if (this.opponentPokemon != null) {
-            g.drawImage(opponentPokemon, OPPONENT_POKEMON_X, OPPONENT_POKEMON_Y, null);
+            opponentPokemon.draw(g2);
         }
     }
 }

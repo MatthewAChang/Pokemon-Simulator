@@ -28,6 +28,7 @@ public class Pokemon implements PokemonData {
     private int currentMove;
     private Image front;
     private Image back;
+    private boolean fainted;
 
     public Pokemon(String name, int level, TypeEnum typeOne, TypeEnum typeTwo, int hp, int attack, int defence, int specialAttack, int specialDefence, int speed, List<Move> moves) {
         this.name = name;
@@ -47,9 +48,10 @@ public class Pokemon implements PokemonData {
         this.currentMove = -1;
         this.front = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-front.png", true);
         this.back = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-back.png", false);
+        this.fainted = false;
     }
 
-    private Pokemon(String name, int level, List<TypeEnum> type, int hp, int hpMax, int attack, int defence, int specialAttack, int specialDefence, int speed, Status status, List<Move> moves, int currentMove, Image front, Image back) {
+    private Pokemon(String name, int level, List<TypeEnum> type, int hp, int hpMax, int attack, int defence, int specialAttack, int specialDefence, int speed, Status status, List<Move> moves, int currentMove, Image front, Image back, boolean fainted) {
         this.name = name;
         this.level = level;
         this.type = new ArrayList<>();
@@ -69,10 +71,11 @@ public class Pokemon implements PokemonData {
         this.currentMove = currentMove;
         this.front = front;
         this.back = back;
+        this.fainted = fainted;
     }
 
     public static Pokemon copy(Pokemon other) {
-        return new Pokemon(other.name, other.level, other.type, other.hp, other.hpMax, other.attack, other.defence, other.specialAttack, other.specialDefence, other.speed, other.status, other.moves, other.currentMove, other.front, other.back);
+        return new Pokemon(other.name, other.level, other.type, other.hp, other.hpMax, other.attack, other.defence, other.specialAttack, other.specialDefence, other.speed, other.status, other.moves, other.currentMove, other.front, other.back, other.fainted);
     }
 
     public String getName() {
@@ -172,12 +175,19 @@ public class Pokemon implements PokemonData {
         return back;
     }
 
+    public void setFainted() {
+        fainted = true;
+    }
+
+    public boolean hasFainted() {
+        return fainted;
+    }
+
     private Image setImage(String path, boolean front) {
         BufferedImage image = null;
         try {
 
             File f = new File(path);
-            if (f.exists()) System.out.println("Exists");
             image = ImageIO.read(f);
         } catch (IOException e) {
             // Nothing

@@ -39,6 +39,7 @@ public class Trainer {
 
     public void pokemonFaints() {
         --pokemonAwakeNum;
+        getCurrentPokemon().setFainted();
     }
 
     public void setCurrentPokemon(int pokemonNum) {

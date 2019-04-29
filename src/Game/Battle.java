@@ -17,14 +17,12 @@ class Battle {
         Pokemon playerPokemon = player.getCurrentPokemon();
         Pokemon opponentPokemon = opponent.getCurrentPokemon();
 
-        Frame.getInstance().setPokemonImage(true);
+        Frame.getInstance().update();
         Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
-        Frame.getInstance().setPokemonImage(false);
+        Frame.getInstance().update();
         Frame.getInstance().setTextAndWaitForNext(opponent.getName() + " sends out " + opponentPokemon.getName() + ".");
 
         while(true) {
-            PrintStatus(player, opponent, playerPokemon, opponentPokemon);
-
             PlayerMove(playerPokemon);
             OpponentMove(playerPokemon, opponentPokemon);
 
@@ -35,7 +33,7 @@ class Battle {
 
                 if (!temp.getName().equals(player.getCurrentPokemon().getName())) {
                     playerPokemon = player.getCurrentPokemon();
-                    Frame.getInstance().setPokemonImage(true);
+                    Frame.getInstance().update();
                     Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
                     Attack(opponentPokemon, playerPokemon, false);
 
@@ -76,15 +74,15 @@ class Battle {
             boolean opponentPokemonFaint = false;
 
             if (playerPokemon.getHp() <= 0) {
-                Frame.getInstance().removePokemonImage(true);
-                Frame.getInstance().setTextAndWaitForNext(playerPokemon.getName() + " has fainted.");
                 player.pokemonFaints();
+                Frame.getInstance().update();
+                Frame.getInstance().setTextAndWaitForNext(playerPokemon.getName() + " has fainted.");
                 playerPokemonFaint = true;
             }
             if (opponentPokemon.getHp() <= 0) {
-                Frame.getInstance().removePokemonImage(false);
-                Frame.getInstance().setTextAndWaitForNext(opponentPokemon.getName() + " has fainted.");
                 opponent.pokemonFaints();
+                Frame.getInstance().update();
+                Frame.getInstance().setTextAndWaitForNext(opponentPokemon.getName() + " has fainted.");
                 opponentPokemonFaint = true;
             }
 
@@ -96,14 +94,14 @@ class Battle {
                     Frame.getInstance().setTextAndWaitForPokemonTwo("Who to send out?");
                 }
                 playerPokemon = player.getCurrentPokemon();
-                Frame.getInstance().setPokemonImage(true);
+                Frame.getInstance().update();
                 Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
             }
 
             if (opponentPokemonFaint && opponent.getPokemonAwakeNum() > 0) {
                 opponent.setCurrentPokemon(opponent.getCurrentPokemonIndex() + 1);
                 opponentPokemon = opponent.getCurrentPokemon();
-                Frame.getInstance().setPokemonImage(false);
+                Frame.getInstance().update();
                 Frame.getInstance().setTextAndWaitForNext(opponent.getName() + " sends out " + opponentPokemon.getName() + ".");
             }
 
@@ -251,30 +249,5 @@ class Battle {
                 return;
             }
         }
-    }
-
-    private static void PrintStatus(Trainer player, Trainer opponent, Pokemon playerPokemon, Pokemon opponentPokemon) {
-        String playerPokemonInfo = GetPokemonInfo(playerPokemon);
-        String playerPokemonHp = GetPokemonHp(playerPokemon);
-        String opponentPokemonInfo = GetPokemonInfo(opponentPokemon);
-        String opponentPokemonHp = GetPokemonHp(opponentPokemon);
-
-        System.out.printf("%20s%25s\n", player.getName(), opponent.getName());
-        System.out.printf("%20s%25s\n", playerPokemonInfo, opponentPokemonInfo);
-        System.out.printf("%20s%25s\n", playerPokemonHp, opponentPokemonHp);
-    }
-
-    private static String GetPokemonInfo(Pokemon pokemon) {
-        String pokemonInfo = "";
-        if (pokemon.getStatus().hasStatus()) {
-            pokemonInfo += pokemon.getStatus().toString();
-        }
-
-        pokemonInfo += pokemon.getName() + " L." + pokemon.getLevel();
-        return pokemonInfo;
-    }
-
-    private static String GetPokemonHp(Pokemon pokemon) {
-        return  "HP " + pokemon.getHp() + "/" + pokemon.getHpMax();
     }
 }

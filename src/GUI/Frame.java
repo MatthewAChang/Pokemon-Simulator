@@ -7,8 +7,6 @@ import Game.Pokemon.Trainer;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -82,7 +80,7 @@ public class Frame extends JFrame implements FrameData {
         textOutput.setLineWrap(true);
         textOutput.setWrapStyleWord(true);
         textOutput.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        textOutput.setFont(new Font("Courier New", Font.PLAIN, 16));
+        textOutput.setFont(new Font("Microsoft Sans Serif", Font.BOLD, 16));
         textPanel.add(textOutput);
 
         return textPanel;
@@ -93,7 +91,7 @@ public class Frame extends JFrame implements FrameData {
         bottomPanel.setLayout(new GridLayout(2, 2));
         for (int i = 0; i < 4; i++) {
             Button button = new Button(i);
-            button.setFont((new Font("Courier New", Font.PLAIN, 16)));
+            button.setFont((new Font("Microsoft Sans Serif", Font.BOLD, 20)));
             button.addActionListener(e -> {
                 switch (currentButtonEnum) {
                     case NEXT: {
@@ -106,7 +104,7 @@ public class Frame extends JFrame implements FrameData {
                         if (button.getId() == 0) {
                             currentButtonEnum = FrameButtonsEnum.MOVE_TWO;
                             waitingForNext = true;
-                        } else if (button.getId() == 1) {
+                        } else if (button.getId() == 2) {
                             currentButtonEnum = FrameButtonsEnum.POKEMON_ONE;
                             player.getCurrentPokemon().setCurrentMove(-1);
                             waitingForNext = true;
@@ -165,24 +163,11 @@ public class Frame extends JFrame implements FrameData {
     public void setTrainer(Trainer player, Trainer opponent) {
         this.player = player;
         this.opponent = opponent;
+        pokemonComponent.setTrainer(this.player, this.opponent);
     }
 
-    public void setPokemonImage(boolean player) {
-        if (player) {
-            pokemonComponent.setPlayerPokemon(this.player.getCurrentPokemon().getBackIcon(), true);
-        }
-        else {
-            pokemonComponent.setPlayerPokemon(this.opponent.getCurrentPokemon().getFrontIcon(), false);
-        }
-    }
-
-    public void removePokemonImage(boolean player) {
-        if (player) {
-            pokemonComponent.removePlayerPokemon(true);
-        }
-        else {
-            pokemonComponent.removePlayerPokemon(false);
-        }
+    public void update() {
+        pokemonComponent.update();
     }
 
     private Image createBackgroundImage() {
@@ -265,8 +250,8 @@ public class Frame extends JFrame implements FrameData {
     }
 
     private void moveOne() {
-        buttons.get(0).setText("Moves");
-        buttons.get(1).setText("Pokemon");
+        buttons.get(0).setText("Fight");
+        buttons.get(2).setText("Pokemon");
     }
 
     private void moveTwo() {
