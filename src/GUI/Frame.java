@@ -38,6 +38,8 @@ public class Frame extends JFrame implements FrameData {
         fr.add(CreateContainerPanel());
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
+
+        FrameStyle.getInstance().setObjects(textOutput, buttons, pokemonComponent);
     }
 
     public static Frame getInstance() {
@@ -160,7 +162,7 @@ public class Frame extends JFrame implements FrameData {
         return bottomPanel;
     }
 
-    public void setTrainer(Trainer player, Trainer opponent) {
+    public void setTrainers(Trainer player, Trainer opponent) {
         this.player = player;
         this.opponent = opponent;
         pokemonComponent.setTrainer(this.player, this.opponent);

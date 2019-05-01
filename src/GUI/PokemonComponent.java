@@ -11,7 +11,17 @@ public class PokemonComponent extends JComponent implements FrameData {
     private PokemonGraphic opponentPokemon;
     private Image background;
 
+    private Font font;
+    private Color fontColor;
+    private Color outlineColor;
+    private Color backgroundColor;
+
     public PokemonComponent() {
+        font = new Font("Microsoft Sans Serif", Font.BOLD, 14);
+        fontColor = Color.BLACK;
+        outlineColor = Color.BLACK;
+        backgroundColor = Color.WHITE;
+
         Dimension size = new Dimension(FRAME_WIDTH, TOP_PANEL_IMAGE_HEIGHT);
         setPreferredSize(size);
         setMinimumSize(size);
@@ -33,6 +43,22 @@ public class PokemonComponent extends JComponent implements FrameData {
         this.background = background;
     }
 
+    public void setFont(Font font) {
+        this.font = font;
+    }
+
+    public void setFontColor(Color color) {
+        this.fontColor = color;
+    }
+
+    public void setOutlineColor(Color color) {
+        this.outlineColor = color;
+    }
+
+    public void setBackgroundColor(Color color) {
+        this.backgroundColor = color;
+    }
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -43,11 +69,11 @@ public class PokemonComponent extends JComponent implements FrameData {
         }
 
         if (this.playerPokemon != null) {
-            playerPokemon.draw(g2);
+            playerPokemon.draw(g2, font, fontColor, outlineColor, backgroundColor);
         }
 
         if (this.opponentPokemon != null) {
-            opponentPokemon.draw(g2);
+            opponentPokemon.draw(g2, font, fontColor, outlineColor, backgroundColor);
         }
     }
 }

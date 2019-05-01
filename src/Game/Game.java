@@ -1,6 +1,7 @@
 package Game;
 
 import GUI.Frame;
+import GUI.Style;
 import Game.Helpers.Create;
 import Game.Pokemon.Trainer;
 
@@ -12,10 +13,11 @@ public class Game {
     }
 
     private static void NewGame() {
-
         List<Trainer> trainers = Create.CreateNewGame();
 
-        Frame.getInstance().setTrainer(trainers.get(0), trainers.get(1));
+        Frame.getInstance().setTrainers(trainers.get(0), trainers.get(1));
+
+        Style.Style();
 
         Battle.Battle(trainers.get(0), trainers.get(1));
     }

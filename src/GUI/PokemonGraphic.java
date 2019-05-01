@@ -14,14 +14,14 @@ public class PokemonGraphic implements FrameData {
         this.player = player;
     }
 
-    public void draw(Graphics2D g2) {
+    public void draw(Graphics2D g2, Font font, Color fontColor, Color outlineColor, Color backgroundColor) {
         if (player) {
             drawPokemon(g2, trainer.getCurrentPokemon().getBackIcon(), PLAYER_POKEMON_X, PLAYER_POKEMON_Y);
-            drawPokemonStatus(g2, PLAYER_POKEMON_STATUS_X, PLAYER_POKEMON_STATUS_Y, PLAYER_POKEMON_STATUS_HEIGHT);
+            drawPokemonStatus(g2, PLAYER_POKEMON_STATUS_X, PLAYER_POKEMON_STATUS_Y, PLAYER_POKEMON_STATUS_HEIGHT, font, fontColor, outlineColor, backgroundColor);
         }
         else {
             drawPokemon(g2, trainer.getCurrentPokemon().getFrontIcon(), OPPONENT_POKEMON_X, OPPONENT_POKEMON_Y);
-            drawPokemonStatus(g2, OPPONENT_POKEMON_STATUS_X, OPPONENT_POKEMON_STATUS_Y, OPPONENT_POKEMON_STATUS_HEIGHT);
+            drawPokemonStatus(g2, OPPONENT_POKEMON_STATUS_X, OPPONENT_POKEMON_STATUS_Y, OPPONENT_POKEMON_STATUS_HEIGHT, font, fontColor, outlineColor, backgroundColor);
         }
     }
 
@@ -31,38 +31,37 @@ public class PokemonGraphic implements FrameData {
         }
     }
 
-    private void drawPokemonStatus(Graphics2D g2, int x, int y, int height) {
-        Font f = new Font("Microsoft Sans Serif", Font.BOLD, 14);
+    private void drawPokemonStatus(Graphics2D g2, int x, int y, int height, Font font, Color fontColor, Color outlineColor, Color backgroundColor) {
+        drawBase(g2, x, y, height, outlineColor, backgroundColor);
 
-        drawBase(g2, x, y, height);
+        drawName(g2, x, y, fontColor);
 
-        drawHp(g2, x, y, f);
-
-        drawName(g2, x, y);
+        drawHp(g2, x, y, font, fontColor, outlineColor);
 
         if (player) {
-            drawHpString(g2, x, y, f);
+            drawHpString(g2, x, y, font, fontColor);
         }
     }
 
-    private void drawBase(Graphics2D g2, int x, int y, int height) {
-        g2.setColor(Color.BLACK);
+    private void drawBase(Graphics2D g2, int x, int y, int height, Color outlineColor, Color backgroundColor) {
+        g2.setColor(outlineColor);
         g2.setStroke(new BasicStroke(3));
         g2.drawRect(x, y, POKEMON_STATUS_WIDTH, height);
 
         Rectangle base = new Rectangle(x, y, POKEMON_STATUS_WIDTH, height);
-        g2.setColor(Color.WHITE);
+        g2.setColor(backgroundColor);
         g2.fill(base);
     }
 
-    private void drawName(Graphics2D g2, int x, int y) {
+    private void drawName(Graphics2D g2, int x, int y, Color fontColor) {
+        g2.setColor(fontColor);
         g2.drawString(trainer.getCurrentPokemon().getName(), x + POKEMON_NAME_X_OFFSET, y + POKEMON_NAME_Y_OFFSET);
         String s = "Lv: " + trainer.getCurrentPokemon().getLevel();
         g2.drawString(s, x + POKEMON_LV_X_OFFSET, y + POKEMON_NAME_Y_OFFSET);
     }
 
-    private void drawHp(Graphics2D g2, int x, int y, Font f) {
-        g2.setColor(Color.BLACK);
+    private void drawHp(Graphics2D g2, int x, int y, Font f, Color fontColor, Color outlineColor) {
+        g2.setColor(outlineColor);
         g2.setStroke(new BasicStroke(2));
         g2.drawRect(x + HP_RECT_X_OFFSET, y + HP_RECT_Y_OFFSET, HP_RECT_WIDTH, HP_RECT_HEIGHT);
 
@@ -77,14 +76,14 @@ public class PokemonGraphic implements FrameData {
         g2.setColor(Color.GREEN);
         g2.fill(hp);
 
-        g2.setColor(Color.BLACK);
-
+        g2.setColor(fontColor);
         g2.setFont(f);
         g2.drawString("HP:", x + HP_TITLE_X_OFFSET, y + HP_TITLE_Y_OFFSET);
     }
 
-    private void drawHpString(Graphics2D g2, int x, int y, Font f) {
+    private void drawHpString(Graphics2D g2, int x, int y, Font f, Color fontColor) {
         g2.setFont(f);
+        g2.setColor(fontColor);
         String currentHp = Integer.toString(trainer.getCurrentPokemon().getHp());
         while (currentHp.length() < 3) {
             currentHp = "0" + currentHp;
