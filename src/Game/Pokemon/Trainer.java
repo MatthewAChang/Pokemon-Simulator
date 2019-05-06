@@ -25,6 +25,10 @@ public class Trainer {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Pokemon getPokemon(int index) {
         return pokemon.get(index);
     }

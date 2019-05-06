@@ -22,7 +22,6 @@ public class Frame extends JFrame implements FrameData {
     private FrameButtonsEnum currentButtonEnum;
 
     private Trainer player;
-    private Trainer opponent;
 
     private Frame() {
         waitingForNext = false;
@@ -39,7 +38,7 @@ public class Frame extends JFrame implements FrameData {
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
 
-        FrameStyle.getInstance().setObjects(textOutput, buttons, pokemonComponent);
+        FrameStyle.getInstance().setFrameObjects(textOutput, buttons, pokemonComponent);
     }
 
     public static Frame getInstance() {
@@ -164,8 +163,8 @@ public class Frame extends JFrame implements FrameData {
 
     public void setTrainers(Trainer player, Trainer opponent) {
         this.player = player;
-        this.opponent = opponent;
-        pokemonComponent.setTrainer(this.player, this.opponent);
+        pokemonComponent.setTrainer(this.player, opponent);
+        FrameStyle.getInstance().setTrainers(this.player, opponent);
     }
 
     public void update() {

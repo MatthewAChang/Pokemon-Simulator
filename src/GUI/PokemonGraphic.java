@@ -1,6 +1,7 @@
 package GUI;
 
 import Game.Helpers.Data.FrameData;
+import Game.Helpers.Enums.StatusEffectEnum;
 import Game.Pokemon.Trainer;
 
 import java.awt.*;
@@ -34,7 +35,7 @@ public class PokemonGraphic implements FrameData {
     private void drawPokemonStatus(Graphics2D g2, int x, int y, int height, Font font, Color fontColor, Color outlineColor, Color backgroundColor) {
         drawBase(g2, x, y, height, outlineColor, backgroundColor);
 
-        drawName(g2, x, y, fontColor);
+        drawBasic(g2, x, y, font, fontColor);
 
         drawHp(g2, x, y, font, fontColor, outlineColor);
 
@@ -53,9 +54,34 @@ public class PokemonGraphic implements FrameData {
         g2.fill(base);
     }
 
-    private void drawName(Graphics2D g2, int x, int y, Color fontColor) {
+    private void drawBasic(Graphics2D g2, int x, int y, Font f, Color fontColor) {
+        drawName(g2, x, y, f, fontColor);
+
+        if (trainer.getCurrentPokemon().getStatus().hasStatus()) {
+            drawStatusEffect(g2, x, y, f, fontColor);
+        }
+
+        drawLv(g2, x, y, f, fontColor);
+    }
+
+    private void drawName(Graphics2D g2, int x, int y, Font f, Color fontColor) {
+        g2.setFont(f);
         g2.setColor(fontColor);
+
         g2.drawString(trainer.getCurrentPokemon().getName(), x + POKEMON_NAME_X_OFFSET, y + POKEMON_NAME_Y_OFFSET);
+    }
+
+    private void drawStatusEffect(Graphics2D g2, int x, int y, Font f, Color fontColor) {
+        g2.setFont(f);
+        g2.setColor(getStatusEffectColor(trainer.getCurrentPokemon().getStatus().getStatus()));
+
+        g2.drawString(trainer.getCurrentPokemon().getStatus().toString(), x + POKEMON_LV_X_OFFSET - 40, y + POKEMON_NAME_Y_OFFSET);
+    }
+
+    private void drawLv(Graphics2D g2, int x, int y, Font f, Color fontColor) {
+        g2.setFont(f);
+        g2.setColor(fontColor);
+
         String s = "Lv: " + trainer.getCurrentPokemon().getLevel();
         g2.drawString(s, x + POKEMON_LV_X_OFFSET, y + POKEMON_NAME_Y_OFFSET);
     }
@@ -97,5 +123,17 @@ public class PokemonGraphic implements FrameData {
         String hpString = currentHp + "/" + maxHp;
 
         g2.drawString(hpString, x + HP_STRING_X_OFFSET, y + HP_STRING_Y_OFFSET);
+    }
+
+    private Color getStatusEffectColor(StatusEffectEnum statusEffect) {
+        switch (statusEffect) {
+            case BRN: return Color.RED;
+            case FRZ: return Color.BLUE;
+            case PAR: return Color.YELLOW;
+            case PSN: return Color.PINK;
+            case SLP: return Color.GRAY;
+            default:
+                return Color.BLACK;
+        }
     }
 }

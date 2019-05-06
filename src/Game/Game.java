@@ -10,6 +10,8 @@ import java.util.List;
 public class Game {
     public static void PokemonGame() {
         NewGame();
+
+        System.exit(0);
     }
 
     private static void NewGame() {
@@ -17,7 +19,7 @@ public class Game {
 
         Frame.getInstance().setTrainers(trainers.get(0), trainers.get(1));
 
-        Style.Style();
+        Style.CreateStyle();
 
         Battle.Battle(trainers.get(0), trainers.get(1));
     }

@@ -1,12 +1,21 @@
 package GUI;
 
+import Game.Helpers.Data.FrameData;
+import Game.Pokemon.Trainer;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class FrameStyle {
+public class FrameStyle implements FrameData {
     private static FrameStyle instance;
 
+    private Trainer player;
+    private Trainer opponent;
     private JTextArea textOutput;
     private ArrayList<Button> buttons;
     private PokemonComponent pokemonComponent;
@@ -18,10 +27,23 @@ public class FrameStyle {
         return instance;
     }
 
-    public void setObjects(JTextArea textOutput, ArrayList<Button> buttons, PokemonComponent pokemonComponent) {
+    public void setFrameObjects(JTextArea textOutput, ArrayList<Button> buttons, PokemonComponent pokemonComponent) {
         this.textOutput = textOutput;
         this.buttons = buttons;
         this.pokemonComponent = pokemonComponent;
+    }
+
+    public void setTrainers(Trainer player, Trainer opponent) {
+        this.player = player;
+        this.opponent = opponent;
+    }
+
+    public void setPlayerName(String name) {
+        this.player.setName(name);
+    }
+
+    public void setOpponentName(String name) {
+        this.opponent.setName(name);
     }
 
     public void setFont(String font) {
@@ -95,9 +117,19 @@ public class FrameStyle {
         textOutput.setForeground(color);
     }
 
+    public void setOutputBackgroundColor(Color color) {
+        textOutput.setBackground(color);
+    }
+
     public void setButtonFontColor(Color color) {
         for (Button b : buttons) {
             b.setForeground(color);
+        }
+    }
+
+    public void setButtonBackgroundColor(Color color) {
+        for (Button b : buttons) {
+            b.setBackground(color);
         }
     }
 
@@ -111,5 +143,23 @@ public class FrameStyle {
 
     public void setStatusBackgroundColor(Color color) {
         pokemonComponent.setBackgroundColor(color);
+    }
+
+    public void setBackgroundImage(String imageName) {
+        BufferedImage image = null;
+        try {
+            String path = System.getProperty("user.dir") + "\\images\\Backgrounds\\" + imageName + ".png";
+            File f = new File(path);
+            image = ImageIO.read(f);
+        } catch (IOException e) {
+            try {
+                String path = System.getProperty("user.dir") + "\\images\\Backgrounds\\" + imageName + ".jpg";
+                File f = new File(path);
+                image = ImageIO.read(f);
+            } catch (IOException e2) {
+                // Nothing
+            }
+        }
+        pokemonComponent.setBackgroundImage(image.getScaledInstance(FRAME_WIDTH, FRAME_HEIGHT / 2, Image.SCALE_SMOOTH));
     }
 }

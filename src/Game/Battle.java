@@ -120,103 +120,6 @@ class Battle {
         }
     }
 
-    private static void StatusEndOfTurn(Pokemon pokemon, boolean player) {
-        switch (pokemon.getStatus().getStatus()) {
-            case BRN: {
-                StatusDamage(pokemon, "burn", player);
-                break;
-            }
-            case FRZ:
-                if (ThreadLocalRandom.current().nextInt(1, 51) < 20) {
-                    pokemon.getStatus().resetStatus();
-                    String opposing = "";
-                    if (!player) {
-                        opposing = "The opposing ";
-                    }
-                    Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " thawed.");
-                }
-                break;
-            case PSN: {
-                StatusDamage(pokemon, "poison", player);
-                break;
-            }
-            case SLP:
-                if (ThreadLocalRandom.current().nextInt(1, 51) < 50) {
-                    pokemon.getStatus().resetStatus();
-                    String opposing = "";
-                    if (!player) {
-                        opposing = "The opposing ";
-                    }
-                    Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " woke up.");
-                }
-                break;
-        }
-    }
-
-    private static void StatusDamage(Pokemon pokemon, String statusDamage, boolean player) {
-        final int damage = Math.round(pokemon.getHpMax() / 16f);
-        pokemon.setHp(damage);
-        String opposing = "";
-        if (!player) {
-            opposing = "The opposing ";
-        }
-        Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is hurt by its " + statusDamage + ". -" + damage);
-    }
-
-    private static void Attack(Pokemon attacker, Pokemon defender, boolean player) {
-        String opposing = "";
-        if (!player) {
-            opposing = "The opposing ";
-        }
-
-        if (attacker.isParalyzed() && ThreadLocalRandom.current().nextInt(1, 101) < 25) {
-            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is paralyzed.");
-        }
-        else if (attacker.isAsleep()) {
-            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is fast asleep");
-        }
-        else if (attacker.isFrozen()) {
-            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is frozen solid.");
-        }
-        else {
-            Move move = attacker.getCurrentMove();
-            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " used " + move.getName() + ".");
-            if (ThreadLocalRandom.current().nextInt(1, 101) < move.getAccuracy()) {
-                DamageCalculator.CalculateDamage(attacker, defender, move);
-
-                if (move.getStatus().hasStatus() && !defender.getStatus().hasStatus()) {
-                    if (ThreadLocalRandom.current().nextInt(1, 101) < move.getStatus().getChance()) {
-                        defender.getStatus().setStatus(move.getStatus().getStatus(), defender.getType(0), defender.getType(1));
-                    }
-                }
-            }
-            else {
-                Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " missed.");
-            }
-        }
-
-    }
-
-    private static boolean Priority(Pokemon playerPokemon, Pokemon opponentPokemon, int playerPokemonPri, int opponentPokemonPri) {
-        if (playerPokemonPri > opponentPokemonPri) {
-            return true;
-        }
-        else if (playerPokemonPri < opponentPokemonPri) {
-            return false;
-        }
-        else {
-            if (playerPokemon.getSpeed() > opponentPokemon.getSpeed()) {
-                return true;
-            }
-            else if ( playerPokemon.getSpeed() < opponentPokemon.getSpeed()) {
-                return false;
-            }
-            else {
-                return ThreadLocalRandom.current().nextInt(0, 2) % 2 == 0;
-            }
-        }
-    }
-
     private static void PlayerMove(Pokemon pokemon) {
         Frame.getInstance().setTextAndWaitForMoveOne("What will " + pokemon.getName() + " do?");
         Frame.getInstance().setTextAndWaitForMoveTwo("What will " + pokemon.getName() + " do?");
@@ -249,5 +152,137 @@ class Battle {
                 return;
             }
         }
+    }
+
+    private static boolean Priority(Pokemon playerPokemon, Pokemon opponentPokemon, int playerPokemonPri, int opponentPokemonPri) {
+        if (playerPokemonPri > opponentPokemonPri) {
+            return true;
+        }
+        else if (playerPokemonPri < opponentPokemonPri) {
+            return false;
+        }
+        else {
+            if (playerPokemon.getSpeed() > opponentPokemon.getSpeed()) {
+                return true;
+            }
+            else if ( playerPokemon.getSpeed() < opponentPokemon.getSpeed()) {
+                return false;
+            }
+            else {
+                return ThreadLocalRandom.current().nextInt(0, 2) % 2 == 0;
+            }
+        }
+    }
+
+    private static void Attack(Pokemon attacker, Pokemon defender, boolean player) {
+        RemoveStatusBeforeAttack(attacker, player);
+
+        String opposing = "";
+        if (!player) {
+            opposing = "The opposing ";
+        }
+
+        if (attacker.isParalyzed() && ThreadLocalRandom.current().nextInt(1, 101) < 25) {
+            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is paralyzed.");
+        }
+        else if (attacker.isAsleep()) {
+            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is fast asleep");
+        }
+        else if (attacker.isFrozen()) {
+            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " is frozen solid.");
+        }
+        else {
+            Move move = attacker.getCurrentMove();
+            Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " used " + move.getName() + ".");
+            if (ThreadLocalRandom.current().nextInt(1, 101) < move.getAccuracy()) {
+                DamageCalculator.CalculateDamage(attacker, defender, move);
+
+                if (defender.getHp() > 0 && move.getStatus().hasStatus() && !defender.getStatus().hasStatus()) {
+                    if (ThreadLocalRandom.current().nextInt(1, 101) < move.getStatus().getChance()) {
+                        defender.getStatus().setStatus(move.getStatus().getStatus(), defender.getType(0), defender.getType(1));
+                        NewStatusEffect(defender, player);
+                    }
+                }
+            }
+            else {
+                Frame.getInstance().setTextAndWaitForNext(opposing + attacker.getName() + " missed.");
+            }
+        }
+    }
+
+    private static void RemoveStatusBeforeAttack(Pokemon pokemon, boolean player) {
+        switch (pokemon.getStatus().getStatus()) {
+            case FRZ:
+                if (ThreadLocalRandom.current().nextInt(1, 101) < 20) {
+                    pokemon.getStatus().resetStatus();
+                    Frame.getInstance().update();
+                    String opposing = "";
+                    if (!player) {
+                        opposing = "The opposing ";
+                    }
+                    Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " thawed.");
+                }
+                break;
+            case SLP:
+                if (ThreadLocalRandom.current().nextInt(1, 101) < 50) {
+                    pokemon.getStatus().resetStatus();
+                    Frame.getInstance().update();
+                    String opposing = "";
+                    if (!player) {
+                        opposing = "The opposing ";
+                    }
+                    Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " woke up.");
+                }
+                break;
+        }
+    }
+
+    private static void NewStatusEffect(Pokemon pokemon, boolean player) {
+        String opposing = "";
+        if (!player) {
+            opposing = "The opposing ";
+        }
+
+        switch (pokemon.getStatus().getStatus()) {
+            case BRN:
+                Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is now burned.");
+                break;
+            case FRZ:
+                Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is now frozen.");
+                break;
+            case PAR:
+                Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is now paralyzed.");
+                break;
+            case PSN:
+                Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is now poisoned.");
+                break;
+            case SLP:
+                Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is now asleep.");
+                break;
+        }
+    }
+
+    private static void StatusEndOfTurn(Pokemon pokemon, boolean player) {
+        switch (pokemon.getStatus().getStatus()) {
+            case BRN: {
+                StatusDamage(pokemon, "burn", player);
+                break;
+            }
+            case PSN: {
+                StatusDamage(pokemon, "poison", player);
+                break;
+            }
+        }
+    }
+
+    private static void StatusDamage(Pokemon pokemon, String statusDamage, boolean player) {
+        final int damage = Math.round(pokemon.getHpMax() / 16f);
+        String opposing = "";
+        if (!player) {
+            opposing = "The opposing ";
+        }
+        Frame.getInstance().setTextAndWaitForNext(opposing + pokemon.getName() + " is hurt by its " + statusDamage + ".");
+        pokemon.setHp(damage);
+        Frame.getInstance().update();
     }
 }

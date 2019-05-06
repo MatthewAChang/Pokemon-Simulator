@@ -34,7 +34,7 @@ public interface FrameData {
     int HP_TITLE_X_OFFSET = 10;
     int HP_TITLE_Y_OFFSET = 42;
 
-    int HP_STRING_X_OFFSET = 183;
+    int HP_STRING_X_OFFSET = 187;
     int HP_STRING_Y_OFFSET = 58;
 
     String BACKGROUND_IMAGE = "Grass.png";

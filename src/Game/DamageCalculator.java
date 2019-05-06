@@ -52,8 +52,7 @@ public class DamageCalculator {
             Frame.getInstance().setTextAndWaitForNext("It was super effective.");
         }
         damage *= type;
-        int damageInt = Math.round(damage);
-        defender.setHp(damageInt);
+        defender.setHp(Math.round(damage));
         Frame.getInstance().update();
         if (move.getRecoil()) {
             RecoilDamage(attacker, move, damage);
@@ -75,10 +74,10 @@ public class DamageCalculator {
             else {
                 recoil = 0.5f;
             }
-            int recoilDamage = Math.round(damage * recoil);
+            final int recoilDamage = Math.round(damage * recoil);
+            Frame.getInstance().setTextAndWaitForNext(attacker.getName() + " was hit by recoil.");
             attacker.setHp(recoilDamage);
             Frame.getInstance().update();
-            Frame.getInstance().setTextAndWaitForNext(attacker.getName() + " was hit by recoil.");
         }
     }
 

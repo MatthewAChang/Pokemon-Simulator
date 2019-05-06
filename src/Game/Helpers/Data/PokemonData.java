@@ -25,18 +25,18 @@ public interface PokemonData {
     };
 
     TypeEnum[][] POKEMON_TYPES = {
-        { TypeEnum.GRA, TypeEnum.POI },
-        { TypeEnum.FIR, TypeEnum.NON },
-        { TypeEnum.PSY, TypeEnum.NON },
-        { TypeEnum.WAT, TypeEnum.NON },
-        { TypeEnum.DAR, TypeEnum.NON },
-        { TypeEnum.STE, TypeEnum.GRO },
-        { TypeEnum.PSY, TypeEnum.FAI },
-        { TypeEnum.DRA, TypeEnum.FLY },
-        { TypeEnum.FIG, TypeEnum.STE },
-        { TypeEnum.DAR, TypeEnum.ICE },
-        { TypeEnum.GRA, TypeEnum.NON },
-        { TypeEnum.POI, TypeEnum.NON }
+        { TypeEnum.GRA, TypeEnum.POI }, // Venusaur
+        { TypeEnum.FIR, TypeEnum.NON }, // Ninetales
+        { TypeEnum.PSY, TypeEnum.NON }, // Mew
+        { TypeEnum.WAT, TypeEnum.NON }, // Feraligatr
+        { TypeEnum.DAR, TypeEnum.NON }, // Umbreon
+        { TypeEnum.STE, TypeEnum.GRO }, // Steelix
+        { TypeEnum.PSY, TypeEnum.FAI }, // Gardevoir
+        { TypeEnum.DRA, TypeEnum.FLY }, // Salamence
+        { TypeEnum.FIG, TypeEnum.STE }, // Lucario
+        { TypeEnum.DAR, TypeEnum.ICE }, // Weavile
+        { TypeEnum.GRA, TypeEnum.NON }, // Leafeon
+        { TypeEnum.POI, TypeEnum.NON }  // Garbodor
     };
 
     int[][] POKEMON_STATS = {
