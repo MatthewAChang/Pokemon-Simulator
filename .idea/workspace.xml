@@ -7,29 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="805532b8-c147-47eb-a999-57975cc24cc1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pokemon_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Pokemon_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/GUI/Frame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/GUI/Frame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/GUI/Frame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/GUI/Frame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/GUI/FrameStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/GUI/FrameStyle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/GUI/PokemonGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/GUI/PokemonGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Pokemon_jar/Pokemon.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Pokemon_jar/Pokemon.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pokemon/GUI/Style.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/GUI/Style.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/Battle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/Battle$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/Battle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/Battle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/DamageCalculator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/DamageCalculator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/DamageCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/DamageCalculator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/Helpers/Data/FrameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/Helpers/Data/FrameData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pokemon/Game/Pokemon/Trainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Pokemon/Game/Pokemon/Trainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/FrameStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/FrameStyle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/PokemonGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PokemonGraphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Style.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/DamageCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/DamageCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Helpers/Data/FrameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Helpers/Data/FrameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Helpers/Data/PokemonData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Helpers/Data/PokemonData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Pokemon/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Pokemon/Trainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,48 +23,31 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/Frame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/FrameStyle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="29" column="31" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="31" />
-              <folding>
-                <element signature="e#1204#1205#0" expanded="true" />
-                <element signature="e#1247#1248#0" expanded="true" />
-                <element signature="e#3301#3302#0" expanded="true" />
-                <element signature="e#3348#3349#0" expanded="true" />
-                <element signature="e#3405#3406#0" expanded="true" />
-                <element signature="e#3452#3453#0" expanded="true" />
-                <element signature="e#3785#3786#0" expanded="true" />
-                <element signature="e#3837#3838#0" expanded="true" />
-                <element signature="e#3891#3892#0" expanded="true" />
-                <element signature="e#3946#3947#0" expanded="true" />
-                <element signature="e#4003#4004#0" expanded="true" />
-                <element signature="e#4061#4062#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game/Pokemon/Trainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="221">
+              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
               <folding>
+                <element signature="e#791#792#0" expanded="true" />
                 <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#1234#1235#0" expanded="true" />
+                <element signature="e#1283#1284#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/PokemonGraphic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -87,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Helpers/Data/FrameData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="153">
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -96,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PokemonComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="499">
+              <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
               <folding>
                 <element signature="e#1402#1403#0" expanded="true" />
                 <element signature="e#1443#1444#0" expanded="true" />
@@ -119,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/src/Game/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -133,11 +101,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Style.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="45" column="36" lean-forward="true" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+            <state relative-caret-position="561">
+              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="17" />
+              <folding>
+                <element signature="e#82#83#0" expanded="true" />
+                <element signature="e#116#117#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -204,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/GUI/ImageComponent.java" />
         <option value="$PROJECT_DIR$/src/GUI/ImagePanel.java" />
         <option value="$PROJECT_DIR$/src/Game/Helpers/Enums/PokemonEnum.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Game/Pokemon/Status.java" />
         <option value="$PROJECT_DIR$/src/GUI/PokemonStatus.java" />
         <option value="$PROJECT_DIR$/src/Game/Pokemon/Pokemon.java" />
@@ -216,12 +196,13 @@
         <option value="$PROJECT_DIR$/src/Game/Helpers/Create.java" />
         <option value="$PROJECT_DIR$/src/GUI/PokemonGraphic.java" />
         <option value="$PROJECT_DIR$/src/Game/Helpers/Data/PokemonData.java" />
-        <option value="$PROJECT_DIR$/src/Game/Pokemon/Trainer.java" />
         <option value="$PROJECT_DIR$/src/GUI/FrameStyle.java" />
         <option value="$PROJECT_DIR$/src/Game/Helpers/Data/FrameData.java" />
-        <option value="$PROJECT_DIR$/src/Game/Game.java" />
         <option value="$PROJECT_DIR$/src/GUI/Frame.java" />
         <option value="$PROJECT_DIR$/src/GUI/Style.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Game/Game.java" />
+        <option value="$PROJECT_DIR$/src/Game/Pokemon/Trainer.java" />
       </list>
     </option>
   </component>
@@ -248,6 +229,17 @@
               <item name="Pokemon" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pokemon" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pokemon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pokemon" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pokemon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pokemon" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pokemon" type="b2602c69:ProjectViewProjectNode" />
@@ -361,16 +353,23 @@
       <workItem from="1556765740500" duration="5872000" />
       <workItem from="1556856564924" duration="494000" />
       <workItem from="1556857298899" duration="892000" />
+      <workItem from="1557119379568" duration="218000" />
+      <workItem from="1557371463532" duration="58000" />
+      <workItem from="1557372983990" duration="11000" />
+      <workItem from="1557450087487" duration="287000" />
+      <workItem from="1557547637075" duration="2316000" />
+      <workItem from="1557553502142" duration="95000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35296000" />
+    <option name="totallyTimeSpent" value="38281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27672327" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14585415" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -471,17 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="24" />
-          <folding>
-            <element signature="e#82#83#0" expanded="true" />
-            <element signature="e#116#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Button.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -524,16 +512,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PokemonGraphic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="510">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
@@ -559,31 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Pokemon/Trainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#832#833#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Helpers/Data/FrameData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PokemonComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#1402#1403#0" expanded="true" />
-            <element signature="e#1443#1444#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -594,17 +554,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Helpers/Create.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="46" column="36" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Style.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -615,10 +575,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Style.java">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="36" lean-forward="true" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="17" />
+          <folding>
+            <element signature="e#82#83#0" expanded="true" />
+            <element signature="e#116#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PokemonComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+          <folding>
+            <element signature="e#1402#1403#0" expanded="true" />
+            <element signature="e#1443#1444#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PokemonGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Pokemon/Trainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1283#1284#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -681,7 +683,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

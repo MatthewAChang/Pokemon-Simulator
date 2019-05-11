@@ -11,7 +11,7 @@ public class Game {
     public static void PokemonGame() {
         NewGame();
 
-        System.exit(0);
+        //System.exit(0);
     }
 
     private static void NewGame() {

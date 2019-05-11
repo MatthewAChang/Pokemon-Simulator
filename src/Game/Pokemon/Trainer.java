@@ -18,7 +18,7 @@ public class Trainer {
         }
         this.pokemonAwakeNum = pokemon.size();
         this.pokemonTotalNum = this.pokemonAwakeNum;
-        this.currentPokemon = -1;
+        this.currentPokemon = 0;
     }
     
     public String getName() {
