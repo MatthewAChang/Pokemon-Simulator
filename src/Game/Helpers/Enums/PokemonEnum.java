@@ -3,9 +3,9 @@ package Game.Helpers.Enums;
 public enum PokemonEnum {
     VENUSAUR,
     NINETALES,
+    GENGAR,
     MEW,
     FERALIGATR,
-    UMBREON,
     STEELIX,
     GARDEVOIR,
     SALAMENCE,

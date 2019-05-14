@@ -38,7 +38,7 @@ public class Style {
         setStatusFontSize(14);
         setFontColor(Color.BLACK);
         setOutputFontColor(Color.BLACK);
-        setOutputBackgroundColor(Color.ORANGE);
+        setOutputBackgroundColor(Color.WHITE);
         setButtonFontColor(Color.BLACK);
         setStatusFontColor(Color.BLACK);
         setStatusOutlineColor(Color.BLACK);

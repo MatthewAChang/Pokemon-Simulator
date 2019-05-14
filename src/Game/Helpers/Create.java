@@ -1,10 +1,7 @@
 package Game.Helpers;
 
 import Game.Helpers.Data.PokemonData;
-import Game.Helpers.Enums.MoveCategoryEnum;
 import Game.Helpers.Enums.PokemonEnum;
-import Game.Helpers.Enums.StatusEffectEnum;
-import Game.Helpers.Enums.TypeEnum;
 import GUI.Prompt;
 import Game.Pokemon.Move;
 import Game.Pokemon.Pokemon;
@@ -79,7 +76,6 @@ public class Create implements PokemonData {
             } catch (ArrayIndexOutOfBoundsException e) {
                 // Nothing
             }
-
         }
 
         List<Pokemon> playerPokemon = new ArrayList<>();
@@ -91,7 +87,6 @@ public class Create implements PokemonData {
             else {
                 opponentPokemon.add(CreatePokemon(pokemonPicked.get(i)));
             }
-
         }
         List<Trainer> trainers = new ArrayList<>();
         trainers.add(new Trainer(TRAINER_NAMES[0], playerPokemon));
@@ -102,95 +97,33 @@ public class Create implements PokemonData {
 
     private static Pokemon CreatePokemon(PokemonEnum pokemon) {
         return new Pokemon(
-                POKEMON_NAMES[pokemon.ordinal()],
-                LEVEL,
-                POKEMON_TYPES[pokemon.ordinal()][0],
-                POKEMON_TYPES[pokemon.ordinal()][1],
-                POKEMON_STATS[pokemon.ordinal()][0],
-                POKEMON_STATS[pokemon.ordinal()][1],
-                POKEMON_STATS[pokemon.ordinal()][2],
-                POKEMON_STATS[pokemon.ordinal()][3],
-                POKEMON_STATS[pokemon.ordinal()][4],
-                POKEMON_STATS[pokemon.ordinal()][5],
-                CreateMoves(pokemon)
+            POKEMON_NAMES[pokemon.ordinal()],
+            LEVEL,
+            POKEMON_TYPES[pokemon.ordinal()][0],
+            POKEMON_TYPES[pokemon.ordinal()][1],
+            POKEMON_STATS[pokemon.ordinal()][0],
+            POKEMON_STATS[pokemon.ordinal()][1],
+            POKEMON_STATS[pokemon.ordinal()][2],
+            POKEMON_STATS[pokemon.ordinal()][3],
+            POKEMON_STATS[pokemon.ordinal()][4],
+            POKEMON_STATS[pokemon.ordinal()][5],
+            CreateMoves(pokemon)
         );
     }
 
     private static List<Move> CreateMoves(PokemonEnum pokemon) {
         List<Move> moves = new ArrayList<>();
-        switch (pokemon) {
-            case VENUSAUR:
-                moves.add(new Move("Earthquake", TypeEnum.GRO, MoveCategoryEnum.PHYSICAL, 100, 100, 0));
-                moves.add(new Move("Energy Ball", TypeEnum.GRA, MoveCategoryEnum.SPECIAL, 90, 100, 0));
-                moves.add(new Move("Sludge Bomb", TypeEnum.POI, MoveCategoryEnum.SPECIAL, 90, 100, 0, new Status(StatusEffectEnum.PSN, 30)));
-                moves.add(new Move("Take Down", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 90, 85, 0, true));
-                break;
-            case NINETALES:
-                moves.add(new Move("Flamethrower", TypeEnum.FIR, MoveCategoryEnum.SPECIAL, 90, 100, 0, new Status(StatusEffectEnum.BRN, 10)));
-                moves.add(new Move("Energy Ball", TypeEnum.GRA, MoveCategoryEnum.SPECIAL, 90, 100, 0));
-                moves.add(new Move("Psyshock", TypeEnum.PSY, MoveCategoryEnum.SPECIAL, 80, 100, 0));
-                moves.add(new Move("Dark Pulse", TypeEnum.DAR, MoveCategoryEnum.SPECIAL, 80, 100, 0));
-                break;
-            case MEW:
-                moves.add(new Move("Flamethrower", TypeEnum.FIR, MoveCategoryEnum.SPECIAL, 90, 100, 0, new Status(StatusEffectEnum.BRN, 10)));
-                moves.add(new Move("Thunder Bolt", TypeEnum.ELE, MoveCategoryEnum.SPECIAL, 90, 100, 0, new Status(StatusEffectEnum.PAR, 10)));
-                moves.add(new Move("Psychic", TypeEnum.PSY, MoveCategoryEnum.SPECIAL, 90, 100, 0));
-                moves.add(new Move("Ice Beam", TypeEnum.ICE, MoveCategoryEnum.SPECIAL, 90, 100, 0, new Status(StatusEffectEnum.FRZ, 10)));
-                break;
-            case FERALIGATR:
-                moves.add(new Move("Aqua Tail", TypeEnum.WAT, MoveCategoryEnum.PHYSICAL, 90, 90, 0));
-                moves.add(new Move("Ice Punch", TypeEnum.ICE, MoveCategoryEnum.PHYSICAL, 75, 100, 0, new Status(StatusEffectEnum.FRZ, 10)));
-                moves.add(new Move("Rock Slide", TypeEnum.ROC, MoveCategoryEnum.PHYSICAL, 75, 90, 0));
-                moves.add(new Move("Dragon Claw", TypeEnum.DRA, MoveCategoryEnum.PHYSICAL, 80, 100, 0));
-                break;
-            case UMBREON:
-                moves.add(new Move("Shadow Ball", TypeEnum.GHO, MoveCategoryEnum.SPECIAL, 80, 100, 0));
-                moves.add(new Move("Psychic", TypeEnum.PSY, MoveCategoryEnum.SPECIAL, 90, 100, 0));
-                moves.add(new Move("Quick Attack", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 40, 100, 1));
-                moves.add(new Move("Dark Pulse", TypeEnum.DAR, MoveCategoryEnum.SPECIAL, 80, 100, 0));
-                break;
-            case STEELIX:
-                moves.add(new Move("Iron Tail", TypeEnum.STE, MoveCategoryEnum.PHYSICAL, 100, 75, 0));
-                moves.add(new Move("Stone Edge", TypeEnum.ROC, MoveCategoryEnum.PHYSICAL, 100, 80, 0));
-                moves.add(new Move("Earthquake", TypeEnum.GRO, MoveCategoryEnum.PHYSICAL, 100, 100, 0));
-                moves.add(new Move("Ice Fang", TypeEnum.ICE, MoveCategoryEnum.PHYSICAL, 65, 95, 0, new Status(StatusEffectEnum.FRZ, 10)));
-                break;
-            case GARDEVOIR:
-                moves.add(new Move("Psychic", TypeEnum.PSY, MoveCategoryEnum.SPECIAL, 90, 100, 0));
-                moves.add(new Move("Moonblast", TypeEnum.FAI, MoveCategoryEnum.SPECIAL, 95, 100, 0));
-                moves.add(new Move("Focus Blast", TypeEnum.FIG, MoveCategoryEnum.SPECIAL, 120, 70, 0));
-                moves.add(new Move("Energy Ball", TypeEnum.GRA, MoveCategoryEnum.SPECIAL, 90, 100, 0));
-                break;
-            case SALAMENCE:
-                moves.add(new Move("Dragon Claw", TypeEnum.DRA, MoveCategoryEnum.PHYSICAL, 80, 100, 0));
-                moves.add(new Move("Zen Headbutt", TypeEnum.PSY, MoveCategoryEnum.PHYSICAL, 80, 90, 0));
-                moves.add(new Move("Double-Edge", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 120, 100, 0, true));
-                moves.add(new Move("Shadow Claw", TypeEnum.GHO, MoveCategoryEnum.PHYSICAL, 70, 100, 0));
-                break;
-            case LUCARIO:
-                moves.add(new Move("Aura Sphere", TypeEnum.FIG, MoveCategoryEnum.SPECIAL, 80, 1000, 0));
-                moves.add(new Move("Flash Cannon", TypeEnum.STE, MoveCategoryEnum.SPECIAL, 80, 100, 0));
-                moves.add(new Move("Stone Edge", TypeEnum.ROC, MoveCategoryEnum.PHYSICAL, 100, 80, 0));
-                moves.add(new Move("Extreme Speed", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 80, 100, 2));
-                break;
-            case WEAVILE:
-                moves.add(new Move("Poison Jab", TypeEnum.POI, MoveCategoryEnum.PHYSICAL, 80, 100, 0, new Status(StatusEffectEnum.PSN, 30)));
-                moves.add(new Move("Night Slash", TypeEnum.DAR, MoveCategoryEnum.PHYSICAL, 70, 100, 0));
-                moves.add(new Move("Icicle Crash", TypeEnum.ICE, MoveCategoryEnum.PHYSICAL, 85, 90, 0));
-                moves.add(new Move("Ice Shard", TypeEnum.ICE, MoveCategoryEnum.PHYSICAL, 40, 100, 1));
-                break;
-            case LEAFEON:
-                moves.add(new Move("Leaf Blade", TypeEnum.GRA, MoveCategoryEnum.PHYSICAL, 90, 100, 0));
-                moves.add(new Move("Double-Edge", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 120, 100, 0, true));
-                moves.add(new Move("Aerial Ace", TypeEnum.FLY, MoveCategoryEnum.PHYSICAL, 60, 1000, 0));
-                moves.add(new Move("X-Scissor", TypeEnum.BUG, MoveCategoryEnum.PHYSICAL, 90, 100, 0));
-                break;
-            case GARBODOR:
-                moves.add(new Move("Gunk Shot", TypeEnum.POI, MoveCategoryEnum.PHYSICAL, 120, 80, 0, new Status(StatusEffectEnum.PSN, 30)));
-                moves.add(new Move("Body Slam", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 85, 100, 0, new Status(StatusEffectEnum.PAR, 30)));
-                moves.add(new Move("Thief", TypeEnum.DAR, MoveCategoryEnum.PHYSICAL, 60, 100, 0));
-                moves.add(new Move("Explosion", TypeEnum.NOR, MoveCategoryEnum.PHYSICAL, 250, 100, 0, true));
-                break;
+        for (int i = 0; i < 4; i++) {
+            moves.add(new Move(
+                MOVE_NAME[pokemon.ordinal()][i],
+                MOVE_TYPE[pokemon.ordinal()][i],
+                MOVE_CATEGORY[pokemon.ordinal()][i],
+                MOVE_STATS[pokemon.ordinal()][i][0],
+                MOVE_STATS[pokemon.ordinal()][i][1],
+                MOVE_STATS[pokemon.ordinal()][i][2],
+                MOVE_RECOIL[pokemon.ordinal()][i],
+                new Status(MOVE_STATUS_EFFECT[pokemon.ordinal()][0], MOVE_STATUS_EFFECT_CHANCE[pokemon.ordinal()][i])
+            ));
         }
         return moves;
     }

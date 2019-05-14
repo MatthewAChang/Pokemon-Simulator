@@ -13,40 +13,7 @@ public class Move {
     private boolean recoil;
     private Status status;
 
-    public Move(String name, TypeEnum type, MoveCategoryEnum category, int damage, int accuracy, int priority) {
-        this.name = name;
-        this.type = type;
-        this.category = category;
-        this.damage = damage;
-        this.accuracy = accuracy;
-        this.priority = priority;
-        this.recoil = false;
-        this.status = new Status();
-    }
-
-    public Move(String name, TypeEnum type, MoveCategoryEnum category, int damage, int accuracy, int priority, boolean recoil) {
-        this.name = name;
-        this.type = type;
-        this.category = category;
-        this.damage = damage;
-        this.accuracy = accuracy;
-        this.priority = priority;
-        this.recoil = recoil;
-        this.status = new Status();
-    }
-
-    public Move(String name, TypeEnum type, MoveCategoryEnum category, int damage, int accuracy, int priority, Status status) {
-        this.name = name;
-        this.type = type;
-        this.category = category;
-        this.damage = damage;
-        this.accuracy = accuracy;
-        this.priority = priority;
-        this.recoil = false;
-        this.status = Status.copy(status);
-    }
-
-    private Move(String name, TypeEnum type, MoveCategoryEnum category, int damage, int accuracy, int priority, boolean recoil, Status status) {
+    public Move(String name, TypeEnum type, MoveCategoryEnum category, int damage, int accuracy, int priority, boolean recoil, Status status) {
         this.name = name;
         this.type = type;
         this.category = category;
@@ -69,20 +36,12 @@ public class Move {
         return this.type;
     }
 
-    public MoveCategoryEnum getCategory() {
-        return this.category;
-    }
-
     public boolean isPhysical() {
         return this.category == MoveCategoryEnum.PHYSICAL;
     }
 
     public boolean isSpecial() {
         return this.category == MoveCategoryEnum.SPECIAL;
-    }
-
-    public boolean isStatus() {
-        return this.category == MoveCategoryEnum.STATUS;
     }
 
     public int getDamage() {
