@@ -1,4 +1,4 @@
-package Game.Helpers.Enums;
+package Game.Helpers;
 
 public enum StatusEffectEnum {
     NON,

@@ -1,7 +1,7 @@
 package GUI;
 
-import Game.Helpers.Enums.PokemonEnum;
-import Game.Helpers.Data.PokemonData;
+import Game.Helpers.Pokemon.PokemonEnum;
+import Game.Helpers.Pokemon.PokemonData;
 
 import javax.swing.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Game.Helpers.Enums;
+package Game.Helpers.Pokemon;
 
 public enum PokemonEnum {
     VENUSAUR,
@@ -12,5 +12,5 @@ public enum PokemonEnum {
     LUCARIO,
     WEAVILE,
     LEAFEON,
-    GARBODOR,
+    GARBODOR
 }

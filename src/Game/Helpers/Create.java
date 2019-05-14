@@ -1,7 +1,7 @@
 package Game.Helpers;
 
-import Game.Helpers.Data.PokemonData;
-import Game.Helpers.Enums.PokemonEnum;
+import Game.Helpers.Pokemon.PokemonData;
+import Game.Helpers.Pokemon.PokemonEnum;
 import GUI.Prompt;
 import Game.Pokemon.Move;
 import Game.Pokemon.Pokemon;

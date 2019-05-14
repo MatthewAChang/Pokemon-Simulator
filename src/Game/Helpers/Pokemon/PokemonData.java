@@ -1,8 +1,8 @@
-package Game.Helpers.Data;
+package Game.Helpers.Pokemon;
 
-import Game.Helpers.Enums.MoveCategoryEnum;
-import Game.Helpers.Enums.StatusEffectEnum;
-import Game.Helpers.Enums.TypeEnum;
+import Game.Helpers.MoveCategoryEnum;
+import Game.Helpers.StatusEffectEnum;
+import Game.Helpers.TypeEnum;
 
 public interface PokemonData {
     int NUM_OF_POKEMON = 12;
@@ -120,48 +120,48 @@ public interface PokemonData {
     };
 
     StatusEffectEnum[][] MOVE_STATUS_EFFECT = {
-            { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.PSN, StatusEffectEnum.NON }, // Venusaur
-            { StatusEffectEnum.BRN, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Ninetales
-            { StatusEffectEnum.NON, StatusEffectEnum.PSN, StatusEffectEnum.NON, StatusEffectEnum.PAR }, // Gengar
-            { StatusEffectEnum.BRN, StatusEffectEnum.PAR, StatusEffectEnum.NON, StatusEffectEnum.FRZ }, // Mew
-            { StatusEffectEnum.NON, StatusEffectEnum.FRZ, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Feraligatr
-            { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.FRZ }, // Steelix
-            { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Gardevoir
-            { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Salamence
-            { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Lucario
-            { StatusEffectEnum.PSN, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Weavile
-            { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Leafeon
-            { StatusEffectEnum.PSN, StatusEffectEnum.PAR, StatusEffectEnum.NON, StatusEffectEnum.NON } // Garbodor
+        { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.PSN, StatusEffectEnum.NON }, // Venusaur
+        { StatusEffectEnum.BRN, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Ninetales
+        { StatusEffectEnum.NON, StatusEffectEnum.PSN, StatusEffectEnum.NON, StatusEffectEnum.PAR }, // Gengar
+        { StatusEffectEnum.BRN, StatusEffectEnum.PAR, StatusEffectEnum.NON, StatusEffectEnum.FRZ }, // Mew
+        { StatusEffectEnum.NON, StatusEffectEnum.FRZ, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Feraligatr
+        { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.FRZ }, // Steelix
+        { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Gardevoir
+        { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Salamence
+        { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Lucario
+        { StatusEffectEnum.PSN, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Weavile
+        { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Leafeon
+        { StatusEffectEnum.PSN, StatusEffectEnum.PAR, StatusEffectEnum.NON, StatusEffectEnum.NON } // Garbodor
     };
 
     int[][] MOVE_STATUS_EFFECT_CHANCE = {
-            { 0, 0, 30, 0 }, // Venusaur
-            { 10, 0, 0, 0 }, // Ninetales
-            { 0, 10, 0, 10 }, // Gengar
-            { 10, 10, 0, 10 }, // Mew
-            { 0, 10, 0, 0 }, // Feraligatr
-            { 0, 0, 0, 10 }, // Steelix
-            { 0, 0, 0, 0 }, // Gardevoir
-            { 0, 0, 0, 0 }, // Salamence
-            { 0, 0, 0, 0 }, // Lucario
-            { 30, 0, 0, 0 }, // Weavile
-            { 0, 0, 0, 0 }, // Leafeon
-            { 30, 30, 0, 0 } // Garbodor
+        { 0, 0, 30, 0 }, // Venusaur
+        { 10, 0, 0, 0 }, // Ninetales
+        { 0, 10, 0, 10 }, // Gengar
+        { 10, 10, 0, 10 }, // Mew
+        { 0, 10, 0, 0 }, // Feraligatr
+        { 0, 0, 0, 10 }, // Steelix
+        { 0, 0, 0, 0 }, // Gardevoir
+        { 0, 0, 0, 0 }, // Salamence
+        { 0, 0, 0, 0 }, // Lucario
+        { 30, 0, 0, 0 }, // Weavile
+        { 0, 0, 0, 0 }, // Leafeon
+        { 30, 30, 0, 0 } // Garbodor
     };
 
     boolean[][] MOVE_RECOIL = {
-            { false, false, false, true }, // Venusaur
-            { false, false, false, false }, // Ninetales
-            { false, false, false, false }, // Gengar
-            { false, false, false, false }, // Mew
-            { false, false, false, false }, // Feraligatr
-            { false, false, false, false }, // Steelix
-            { false, false, false, false }, // Gardevoir
-            { false, false, true, false }, // Salamence
-            { false, false, false, false }, // Lucario
-            { false, false, false, false }, // Weavile
-            { false, true, false, false }, // Leafeon
-            { false, false, false, true } // Garbodor
+        { false, false, false, true }, // Venusaur
+        { false, false, false, false }, // Ninetales
+        { false, false, false, false }, // Gengar
+        { false, false, false, false }, // Mew
+        { false, false, false, false }, // Feraligatr
+        { false, false, false, false }, // Steelix
+        { false, false, false, false }, // Gardevoir
+        { false, false, true, false }, // Salamence
+        { false, false, false, false }, // Lucario
+        { false, false, false, false }, // Weavile
+        { false, true, false, false }, // Leafeon
+        { false, false, false, true } // Garbodor
     };
 
     int POKEMON_FRONT_IMAGE_SIZE = 150;

@@ -1,6 +1,6 @@
 package GUI;
 
-import Game.Helpers.Data.FrameData;
+import Game.Helpers.Frame.FrameData;
 import Game.Pokemon.Trainer;
 
 import javax.imageio.ImageIO;

@@ -3,7 +3,7 @@ package Game;
 import GUI.Frame;
 import Game.Pokemon.Move;
 import Game.Pokemon.Pokemon;
-import Game.Helpers.Enums.TypeEnum;
+import Game.Helpers.TypeEnum;
 
 import java.util.concurrent.ThreadLocalRandom;
 

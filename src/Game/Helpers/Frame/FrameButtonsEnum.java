@@ -1,4 +1,4 @@
-package Game.Helpers.Enums;
+package Game.Helpers.Frame;
 
 public enum FrameButtonsEnum {
     NULL,
@@ -6,5 +6,5 @@ public enum FrameButtonsEnum {
     MOVE_ONE,
     MOVE_TWO,
     POKEMON_ONE,
-    POKEMON_TWO;
+    POKEMON_TWO
 }

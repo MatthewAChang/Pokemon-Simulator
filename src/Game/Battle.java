@@ -1,7 +1,7 @@
 package Game;
 
 import GUI.Frame;
-import Game.Helpers.Enums.TypeEnum;
+import Game.Helpers.TypeEnum;
 import Game.Pokemon.Move;
 import Game.Pokemon.Pokemon;
 import Game.Pokemon.Trainer;

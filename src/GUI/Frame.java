@@ -1,7 +1,7 @@
 package GUI;
 
-import Game.Helpers.Data.FrameData;
-import Game.Helpers.Enums.FrameButtonsEnum;
+import Game.Helpers.Frame.FrameData;
+import Game.Helpers.Frame.FrameButtonsEnum;
 import Game.Pokemon.Trainer;
 
 import javax.imageio.ImageIO;

@@ -1,4 +1,4 @@
-package Game.Helpers.Data;
+package Game.Helpers.Frame;
 
 public interface FrameData {
     int FRAME_WIDTH = 600;
