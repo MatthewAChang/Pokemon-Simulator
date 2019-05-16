@@ -46,8 +46,8 @@ public class Pokemon implements PokemonData {
         this.status = new Status();
         this.moves = moves;
         this.currentMove = -1;
-        this.front = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-front.png", true);
-        this.back = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-back.png", false);
+        this.front = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-front.png", 1, true);
+        this.back = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-back.png", 1, false);
         this.fainted = false;
     }
 
@@ -183,7 +183,12 @@ public class Pokemon implements PokemonData {
         return fainted;
     }
 
-    private Image setImage(String path, boolean front) {
+    public void setImageSizeMultiplier(double multiplier) {
+        this.front = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-front.png", multiplier, true);
+        this.back = setImage(System.getProperty("user.dir") + "\\images\\Pokemon\\" + name + "-back.png", multiplier, false);
+    }
+
+    private Image setImage(String path, double multiplier, boolean front) {
         BufferedImage image = null;
         try {
 
@@ -194,10 +199,10 @@ public class Pokemon implements PokemonData {
         }
 
         if (front) {
-            return image.getScaledInstance(POKEMON_FRONT_IMAGE_SIZE, POKEMON_FRONT_IMAGE_SIZE, Image.SCALE_SMOOTH);
+            return image.getScaledInstance((int)Math.round(POKEMON_FRONT_IMAGE_SIZE * multiplier), (int)Math.round(POKEMON_FRONT_IMAGE_SIZE * multiplier), Image.SCALE_SMOOTH);
         }
         else {
-            return image.getScaledInstance(POKEMON_BACK_IMAGE_SIZE, POKEMON_BACK_IMAGE_SIZE, Image.SCALE_SMOOTH);
+            return image.getScaledInstance((int)Math.round(POKEMON_BACK_IMAGE_SIZE * multiplier), (int)Math.round(POKEMON_BACK_IMAGE_SIZE * multiplier), Image.SCALE_SMOOTH);
         }
     }
 }

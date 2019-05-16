@@ -1,5 +1,7 @@
 package GUI;
 
+import Game.DamageCalculator;
+
 import java.awt.*;
 
 public class Style {
@@ -24,7 +26,9 @@ public class Style {
         setStatusOutlineColor(Color color)
         setStatusBackgroundColor(Color color)
         setBackgroundImage(String name)
-         */
+        showBackground(boolean show)
+        setDamageMultiplier(double multiplier)
+        setPokemonSizeMultiplier(double multiplier);
 
         setPlayerName("Ash");
         setOpponentName("Gary");
@@ -44,6 +48,10 @@ public class Style {
         setStatusOutlineColor(Color.BLACK);
         setStatusBackgroundColor(Color.WHITE);
         setBackgroundImage("Field");
+        showBackground(true);
+        setDamageMultiplier(1);
+        setPokemonSizeMultiplier(1);
+         */
     }
 
     private static void setPlayerName(String name) {
@@ -120,5 +128,17 @@ public class Style {
 
     private static void setBackgroundImage(String name) {
         FrameStyle.getInstance().setBackgroundImage(name);
+    }
+
+    private static void showBackground(boolean show) {
+        FrameStyle.getInstance().showBackground(show);
+    }
+
+    private static void setDamageMultiplier(double multiplier) {
+        DamageCalculator.setDamageMultiplier(multiplier);
+    }
+
+    private static void setPokemonSizeMultiplier(double multiplier) {
+        FrameStyle.getInstance().setPokemonSizeMultiplier(multiplier);
     }
 }

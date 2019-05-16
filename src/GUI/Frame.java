@@ -241,7 +241,6 @@ public class Frame extends JFrame implements FrameData {
             case POKEMON_TWO:
                 pokemonTwo();
                 break;
-
         }
         waitForInput();
     }

@@ -16,13 +16,15 @@ public class PokemonGraphic implements FrameData {
     }
 
     public void draw(Graphics2D g2, Font font, Color fontColor, Color outlineColor, Color backgroundColor) {
-        if (player) {
-            drawPokemon(g2, trainer.getCurrentPokemon().getBackIcon(), PLAYER_POKEMON_X, PLAYER_POKEMON_Y);
-            drawPokemonStatus(g2, PLAYER_POKEMON_STATUS_X, PLAYER_POKEMON_STATUS_Y, PLAYER_POKEMON_STATUS_HEIGHT, font, fontColor, outlineColor, backgroundColor);
-        }
-        else {
-            drawPokemon(g2, trainer.getCurrentPokemon().getFrontIcon(), OPPONENT_POKEMON_X, OPPONENT_POKEMON_Y);
-            drawPokemonStatus(g2, OPPONENT_POKEMON_STATUS_X, OPPONENT_POKEMON_STATUS_Y, OPPONENT_POKEMON_STATUS_HEIGHT, font, fontColor, outlineColor, backgroundColor);
+        if (trainer.getCurrentPokemon() != null) {
+            if (player) {
+                drawPokemon(g2, trainer.getCurrentPokemon().getBackIcon(), PLAYER_POKEMON_X, PLAYER_POKEMON_Y);
+                drawPokemonStatus(g2, PLAYER_POKEMON_STATUS_X, PLAYER_POKEMON_STATUS_Y, PLAYER_POKEMON_STATUS_HEIGHT, font, fontColor, outlineColor, backgroundColor);
+            }
+            else {
+                drawPokemon(g2, trainer.getCurrentPokemon().getFrontIcon(), OPPONENT_POKEMON_X, OPPONENT_POKEMON_Y);
+                drawPokemonStatus(g2, OPPONENT_POKEMON_STATUS_X, OPPONENT_POKEMON_STATUS_Y, OPPONENT_POKEMON_STATUS_HEIGHT, font, fontColor, outlineColor, backgroundColor);
+            }
         }
     }
 
@@ -95,10 +97,10 @@ public class PokemonGraphic implements FrameData {
         g2.setColor(Color.GRAY);
         g2.fill(lostHp);
 
-        float currentHp = (float)trainer.getCurrentPokemon().getHp() / (float)trainer.getCurrentPokemon().getHpMax();
-        float width = currentHp * HP_RECT_WIDTH;
+        double currentHp = (double)trainer.getCurrentPokemon().getHp() / (double)trainer.getCurrentPokemon().getHpMax();
+        double width = currentHp * HP_RECT_WIDTH;
 
-        Rectangle hp = new Rectangle(x + HP_RECT_X_OFFSET, y + HP_RECT_Y_OFFSET, Math.round(width), HP_RECT_HEIGHT);
+        Rectangle hp = new Rectangle(x + HP_RECT_X_OFFSET, y + HP_RECT_Y_OFFSET, (int)Math.round(width), HP_RECT_HEIGHT);
         g2.setColor(Color.GREEN);
         g2.fill(hp);
 

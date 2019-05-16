@@ -1,6 +1,7 @@
 package GUI;
 
 import Game.Helpers.Frame.FrameData;
+import Game.Pokemon.Pokemon;
 import Game.Pokemon.Trainer;
 
 import javax.imageio.ImageIO;
@@ -161,5 +162,18 @@ public class FrameStyle implements FrameData {
             }
         }
         pokemonComponent.setBackgroundImage(image.getScaledInstance(FRAME_WIDTH, FRAME_HEIGHT / 2, Image.SCALE_SMOOTH));
+    }
+
+    public void showBackground(boolean show) {
+        pokemonComponent.showBackground(show);
+    }
+
+    public void setPokemonSizeMultiplier(double multiplier) {
+        for (int i = 0; i < player.getPokemonTotalNum(); i++) {
+            player.getPokemon(i).setImageSizeMultiplier(multiplier);
+        }
+        for (int i = 0; i < opponent.getPokemonTotalNum(); i++) {
+            opponent.getPokemon(i).setImageSizeMultiplier(multiplier);
+        }
     }
 }

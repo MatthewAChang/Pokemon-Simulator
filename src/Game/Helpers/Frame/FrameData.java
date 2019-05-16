@@ -8,8 +8,8 @@ public interface FrameData {
     int TOP_PANEL_TEXT_HEIGHT  = (FRAME_HEIGHT / 2) / 4;
 
     int PLAYER_POKEMON_X = FRAME_WIDTH / 10;
-    int PLAYER_POKEMON_Y = Math.round(FRAME_HEIGHT / 6.4f);
-    int OPPONENT_POKEMON_X = Math.round(FRAME_WIDTH / 1.6f);
+    int PLAYER_POKEMON_Y = (int)Math.round(FRAME_HEIGHT / 6.4);
+    int OPPONENT_POKEMON_X = (int)Math.round(FRAME_WIDTH / 1.6);
     int OPPONENT_POKEMON_Y = FRAME_HEIGHT / 10;
 
     int PLAYER_POKEMON_STATUS_X = 310;

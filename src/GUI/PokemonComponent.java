@@ -15,12 +15,14 @@ public class PokemonComponent extends JComponent implements FrameData {
     private Color fontColor;
     private Color outlineColor;
     private Color backgroundColor;
+    private boolean showBackground;
 
     public PokemonComponent() {
         font = new Font("Microsoft Sans Serif", Font.BOLD, 14);
         fontColor = Color.BLACK;
         outlineColor = Color.BLACK;
         backgroundColor = Color.WHITE;
+        showBackground = true;
 
         Dimension size = new Dimension(FRAME_WIDTH, TOP_PANEL_IMAGE_HEIGHT);
         setPreferredSize(size);
@@ -59,12 +61,16 @@ public class PokemonComponent extends JComponent implements FrameData {
         this.backgroundColor = color;
     }
 
+    public void showBackground(boolean show) {
+        showBackground = show;
+    }
+
     @Override
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
 
-        if (this.background != null) {
+        if (showBackground && this.background != null) {
             g.drawImage(background, 0, 0, null);
         }
 

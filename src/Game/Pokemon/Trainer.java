@@ -18,7 +18,7 @@ public class Trainer {
         }
         this.pokemonAwakeNum = pokemon.size();
         this.pokemonTotalNum = this.pokemonAwakeNum;
-        this.currentPokemon = 0;
+        this.currentPokemon = -1;
     }
     
     public String getName() {
@@ -30,6 +30,9 @@ public class Trainer {
     }
 
     public Pokemon getPokemon(int index) {
+        if (index < 0 || index >= pokemonTotalNum) {
+            return null;
+        }
         return pokemon.get(index);
     }
 

@@ -13,12 +13,12 @@ import java.util.concurrent.ThreadLocalRandom;
 class Battle {
     static void Battle(Trainer player, Trainer opponent) {
         player.setCurrentPokemon(0);
-        opponent.setCurrentPokemon(0);
         Pokemon playerPokemon = player.getCurrentPokemon();
-        Pokemon opponentPokemon = opponent.getCurrentPokemon();
-
         Frame.getInstance().update();
         Frame.getInstance().setTextAndWaitForNext(player.getName() + " sends out " + playerPokemon.getName() + ".");
+
+        opponent.setCurrentPokemon(0);
+        Pokemon opponentPokemon = opponent.getCurrentPokemon();
         Frame.getInstance().update();
         Frame.getInstance().setTextAndWaitForNext(opponent.getName() + " sends out " + opponentPokemon.getName() + ".");
 
@@ -126,9 +126,9 @@ class Battle {
     }
 
     private static void OpponentMove(Pokemon playerPokemon, Pokemon opponentPokemon) {
-        float []opponentDamage = new float[4];
+        double []opponentDamage = new double[4];
         List<Integer> highestMultiplierMoves = new ArrayList<>();
-        float highest = 0;
+        double highest = 0;
         for (int i = 0; i < 4; i++) {
             opponentDamage[i] = DamageCalculator.TypeModifier(opponentPokemon.getMove(i).getType(), playerPokemon.getType(0));
             if (playerPokemon.getType(1) != TypeEnum.NON) {
