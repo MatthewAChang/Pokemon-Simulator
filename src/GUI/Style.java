@@ -29,14 +29,14 @@ public class Style {
         showBackground(boolean show)
         setDamageMultiplier(double multiplier)
         setPokemonSizeMultiplier(double multiplier);
+         */
 
-        setPlayerName("Ash");
-        setOpponentName("Gary");
+        setPlayerName("Red");
+        setOpponentName("Blue");
         setFont("Microsoft Sans Serif");
         setOutputFont("Microsoft Sans Serif");
         setButtonFont("Microsoft Sans Serif");
         setStatusFont("Microsoft Sans Serif");
-        setFontSize(50);
         setOutputFontSize(16);
         setButtonFontSize(20);
         setStatusFontSize(14);
@@ -51,7 +51,6 @@ public class Style {
         showBackground(true);
         setDamageMultiplier(1);
         setPokemonSizeMultiplier(1);
-         */
     }
 
     private static void setPlayerName(String name) {
