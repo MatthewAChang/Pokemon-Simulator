@@ -8,8 +8,6 @@ import Game.Helpers.Enum.TypeEnum;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DamageCalculator {
-    private static double damageMultiplier = 1;
-
     public static void CalculateDamage(Pokemon attacker, Pokemon defender, Move move) {
         double damage;
         damage = (((double)(2 * attacker.getLevel())) / 5) + 2;
@@ -54,16 +52,11 @@ public class DamageCalculator {
             Frame.getInstance().setTextAndWaitForNext("It was super effective.");
         }
         damage *= type;
-        damage *= damageMultiplier;
         defender.setHp((int)Math.round(damage));
         Frame.getInstance().update();
         if (move.getRecoil()) {
             RecoilDamage(attacker, move, damage);
         }
-    }
-
-    public static void setDamageMultiplier(double multiplier) {
-        damageMultiplier = multiplier;
     }
 
     private static void RecoilDamage(Pokemon attacker, Move move, double damage) {
