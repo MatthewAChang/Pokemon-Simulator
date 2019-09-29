@@ -1,8 +1,8 @@
-package Game.Helpers.Pokemon;
+package Game.Helpers;
 
-import Game.Helpers.MoveCategoryEnum;
-import Game.Helpers.StatusEffectEnum;
-import Game.Helpers.TypeEnum;
+import Game.Helpers.Enum.MoveCategoryEnum;
+import Game.Helpers.Enum.StatusEffectEnum;
+import Game.Helpers.Enum.TypeEnum;
 
 public interface PokemonData {
     int NUM_OF_POKEMON = 12;
@@ -23,8 +23,7 @@ public interface PokemonData {
         "Lucario",
         "Weavile",
         "Leafeon",
-        "Garbodor",
-        ""
+        "Garbodor"
     };
 
     // Type 1, Type 2
@@ -41,7 +40,6 @@ public interface PokemonData {
         { TypeEnum.DAR, TypeEnum.ICE }, // Weavile
         { TypeEnum.GRA, TypeEnum.NON }, // Leafeon
         { TypeEnum.POI, TypeEnum.NON },  // Garbodor
-        { null, null }  //
     };
 
     // HP, Attack, Defence, Special Attack, Special Defence, Speed
@@ -58,7 +56,6 @@ public interface PokemonData {
         { 145, 140,  85,  65, 105, 145 }, // Weavile
         { 140, 130, 150,  80,  85, 115 }, // Leafeon
         { 155, 115, 102,  80, 102,  95 }, // Garbodor
-        { 0, 0, 0, 0, 0, 0 } //
     };
 
     String[][] MOVE_NAME = {
@@ -74,7 +71,6 @@ public interface PokemonData {
         {"Poison Jab", "Night Slash", "Icicle Crash", "Ice Shard"}, // Weavile
         {"Leaf Blade", "Double-Edge", "Aerial Ace", "X-Scissor"}, // Leafeon
         {"Gunk Shot", "Body Slam", "Thief", "Explosion"}, // Garbodor
-        {"", "", "", ""} //
     };
 
     TypeEnum[][] MOVE_TYPE = {
@@ -90,7 +86,6 @@ public interface PokemonData {
         { TypeEnum.POI, TypeEnum.DAR, TypeEnum.ICE, TypeEnum.ICE }, // Weavile
         { TypeEnum.GRA, TypeEnum.NOR, TypeEnum.FLY, TypeEnum.BUG }, // Leafeon
         { TypeEnum.POI, TypeEnum.NOR, TypeEnum.DAR, TypeEnum.NOR }, // Garbodor
-        { null, null, null, null } //
     };
 
     MoveCategoryEnum[][] MOVE_CATEGORY = {
@@ -106,7 +101,6 @@ public interface PokemonData {
         { MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL }, // Weavile
         { MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL }, // Leafeon
         { MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL, MoveCategoryEnum.PHYSICAL }, // Garbodor
-        { null, null, null, null } //
     };
 
     // Damage, Accuracy, Priority
@@ -123,7 +117,6 @@ public interface PokemonData {
         { {80, 100, 0}, {70, 100, 0}, {85, 90, 0}, {40, 100, 1} }, // Weavile
         { {90, 100, 0}, {120, 100, 0}, {60, 1000, 0}, {90, 100, 0} }, // Leafeon
         { {120, 80, 0}, {85, 100, 0}, {60, 100, 0}, {250, 100, 0} }, // Garbodor
-        { {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0} } //
     };
 
     StatusEffectEnum[][] MOVE_STATUS_EFFECT = {
@@ -139,7 +132,6 @@ public interface PokemonData {
         { StatusEffectEnum.PSN, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Weavile
         { StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Leafeon
         { StatusEffectEnum.PSN, StatusEffectEnum.PAR, StatusEffectEnum.NON, StatusEffectEnum.NON }, // Garbodor
-        { null, null, null, null } //
     };
 
     int[][] MOVE_STATUS_EFFECT_CHANCE = {
@@ -155,7 +147,6 @@ public interface PokemonData {
         { 30, 0, 0, 0 }, // Weavile
         { 0, 0, 0, 0 }, // Leafeon
         { 30, 30, 0, 0 }, // Garbodor
-        { 0, 0, 0, 0 } //
     };
 
     boolean[][] MOVE_RECOIL = {
@@ -171,7 +162,6 @@ public interface PokemonData {
         { false, false, false, false }, // Weavile
         { false, true, false, false }, // Leafeon
         { false, false, false, true }, // Garbodor
-        { false, false, false, false } //
     };
 
     int POKEMON_FRONT_IMAGE_SIZE = 150;

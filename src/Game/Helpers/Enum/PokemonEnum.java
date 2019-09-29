@@ -1,4 +1,4 @@
-package Game.Helpers.Pokemon;
+package Game.Helpers.Enum;
 
 public enum PokemonEnum {
     VENUSAUR,

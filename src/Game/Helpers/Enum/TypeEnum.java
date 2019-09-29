@@ -1,4 +1,4 @@
-package Game.Helpers;
+package Game.Helpers.Enum;
 
 public enum TypeEnum {
     NON,

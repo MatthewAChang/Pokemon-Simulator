@@ -1,7 +1,7 @@
 package GUI;
 
-import Game.Helpers.Frame.FrameData;
-import Game.Helpers.Frame.FrameButtonsEnum;
+import Game.Helpers.FrameData;
+import Game.Helpers.Enum.FrameButtonsEnum;
 import Game.Pokemon.Trainer;
 
 import javax.imageio.ImageIO;
@@ -37,8 +37,6 @@ public class Frame extends JFrame implements FrameData {
         fr.add(CreateContainerPanel());
         fr.setLocationRelativeTo(null);
         fr.setVisible(true);
-
-        FrameStyle.getInstance().setFrameObjects(textOutput, buttons, pokemonComponent);
     }
 
     public static Frame getInstance() {
@@ -164,7 +162,6 @@ public class Frame extends JFrame implements FrameData {
     public void setTrainers(Trainer player, Trainer opponent) {
         this.player = player;
         pokemonComponent.setTrainer(this.player, opponent);
-        FrameStyle.getInstance().setTrainers(this.player, opponent);
     }
 
     public void update() {

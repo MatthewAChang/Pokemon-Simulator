@@ -1,8 +1,8 @@
 package Game.Pokemon;
 
-import Game.Helpers.Pokemon.PokemonData;
-import Game.Helpers.StatusEffectEnum;
-import Game.Helpers.TypeEnum;
+import Game.Helpers.PokemonData;
+import Game.Helpers.Enum.StatusEffectEnum;
+import Game.Helpers.Enum.TypeEnum;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

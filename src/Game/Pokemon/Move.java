@@ -1,7 +1,7 @@
 package Game.Pokemon;
 
-import Game.Helpers.MoveCategoryEnum;
-import Game.Helpers.TypeEnum;
+import Game.Helpers.Enum.MoveCategoryEnum;
+import Game.Helpers.Enum.TypeEnum;
 
 public class Move {
     private String name;

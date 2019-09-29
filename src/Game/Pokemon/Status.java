@@ -1,7 +1,7 @@
 package Game.Pokemon;
 
-import Game.Helpers.StatusEffectEnum;
-import Game.Helpers.TypeEnum;
+import Game.Helpers.Enum.StatusEffectEnum;
+import Game.Helpers.Enum.TypeEnum;
 
 public class Status {
     private StatusEffectEnum status;

@@ -1,4 +1,4 @@
-package Game.Helpers.Frame;
+package Game.Helpers.Enum;
 
 public enum FrameButtonsEnum {
     NULL,

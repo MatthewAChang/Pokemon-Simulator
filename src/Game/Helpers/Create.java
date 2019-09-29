@@ -1,7 +1,6 @@
 package Game.Helpers;
 
-import Game.Helpers.Pokemon.PokemonData;
-import Game.Helpers.Pokemon.PokemonEnum;
+import Game.Helpers.Enum.PokemonEnum;
 import GUI.Prompt;
 import Game.Pokemon.Move;
 import Game.Pokemon.Pokemon;
@@ -122,7 +121,7 @@ public class Create implements PokemonData {
                 MOVE_STATS[pokemon.ordinal()][i][1],
                 MOVE_STATS[pokemon.ordinal()][i][2],
                 MOVE_RECOIL[pokemon.ordinal()][i],
-                new Status(MOVE_STATUS_EFFECT[pokemon.ordinal()][0], MOVE_STATUS_EFFECT_CHANCE[pokemon.ordinal()][i])
+                new Status(MOVE_STATUS_EFFECT[pokemon.ordinal()][i], MOVE_STATUS_EFFECT_CHANCE[pokemon.ordinal()][i])
             ));
         }
         return moves;

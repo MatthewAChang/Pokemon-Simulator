@@ -1,6 +1,6 @@
 package GUI;
 
-import Game.Helpers.Frame.FrameData;
+import Game.Helpers.FrameData;
 import Game.Pokemon.Trainer;
 
 import javax.swing.*;
@@ -47,22 +47,6 @@ public class PokemonComponent extends JComponent implements FrameData {
 
     public void setFont(Font font) {
         this.font = font;
-    }
-
-    public void setFontColor(Color color) {
-        this.fontColor = color;
-    }
-
-    public void setOutlineColor(Color color) {
-        this.outlineColor = color;
-    }
-
-    public void setBackgroundColor(Color color) {
-        this.backgroundColor = color;
-    }
-
-    public void showBackground(boolean show) {
-        showBackground = show;
     }
 
     @Override

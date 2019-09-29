@@ -1,7 +1,7 @@
 package GUI;
 
-import Game.Helpers.Frame.FrameData;
-import Game.Helpers.StatusEffectEnum;
+import Game.Helpers.FrameData;
+import Game.Helpers.Enum.StatusEffectEnum;
 import Game.Pokemon.Trainer;
 
 import java.awt.*;
